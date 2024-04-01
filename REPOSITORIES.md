@@ -54,7 +54,7 @@ project's functionality from an end-user perspective, they are indispensable
 for the project's health, efficiency, and scalability.
 
 
-### Policies Scope
+### Policy Scope
 [![Kubewarden Policy Repository](./badges/kubewarden-policies.svg)](#policy-scope)
 
 The Policies Scope encompasses repositories that contain specific policies
