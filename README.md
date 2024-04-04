@@ -210,3 +210,8 @@ The list of archived repositories can be found
 See the [contributing
 guide](https://github.com/kubewarden/community/blob/main/CONTRIBUTING.md) and
 the [code of conduct](./CODE_OF_CONDUCT.md).
+
+## Security policy
+
+See the [security policy](./SECURITY.md) for more information about how to report
+any security issues.
