@@ -22,6 +22,11 @@ You could also look into the following "core" projects:
 | [`kwctl`](https://github.com/kubewarden/kwctl) | Kubewarden policy multi-purpose cli tool | Rust |
 | [`audit-scanner`](https://github.com/kubewarden/audit-scanner) | continously report policy results | Go |
 
+### Specific CONTRIBUTING.md guides
+
+Once you have selected a project repository to contribute, please read the CONTRIBUTING.md on that repository for specific
+directions on setting a development environment, testing, or development tools needed.
+
 ### Rust code conventions
 
 In the Kubewarden Rust code base everyone should follow some standards. This
