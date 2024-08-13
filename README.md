@@ -237,7 +237,3 @@ name for future use.
 
 The list of archived repositories can be found
 [here](https://github.com/kubewarden?q=&type=archived&language=&sort=name).
-
-## Linux Foundation trademark
-
-The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage
