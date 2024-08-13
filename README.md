@@ -1,4 +1,5 @@
 [![CLOMonitor](https://img.shields.io/endpoint?url=https://clomonitor.io/api/projects/cncf/kubewarden/badge)](https://clomonitor.io/projects/cncf/kubewarden)
+[![CNCF Landscape](https://img.shields.io/badge/CNCF%20Landscape-5699C6)](https://landscape.cncf.io/?item=provisioning--security-compliance--kubewarden)
 
 This repository aims to document the evolution process of The Kubewarden
 Project.
@@ -237,7 +238,3 @@ name for future use.
 
 The list of archived repositories can be found
 [here](https://github.com/kubewarden?q=&type=archived&language=&sort=name).
-
-## Linux Foundation trademark
-
-The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage
