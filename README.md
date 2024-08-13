@@ -1,4 +1,5 @@
 [![CLOMonitor](https://img.shields.io/endpoint?url=https://clomonitor.io/api/projects/cncf/kubewarden/badge)](https://clomonitor.io/projects/cncf/kubewarden)
+[![CNCF Landscape](https://img.shields.io/badge/CNCF%20Landscape-5699C6)](https://landscape.cncf.io/?item=provisioning--security-compliance--kubewarden)
 
 This repository aims to document the evolution process of The Kubewarden
 Project.
