@@ -71,7 +71,3 @@ On receipt the security team will:
 
 [mailing-list]: https://lists.cncf.io/g/cncf-kubewarden-maintainers
 [slack-room]: https://kubernetes.slack.com/archives/C03L52JRAFM
-
-## Securing a Kubewarden installation
-
-If you are looking to secure your Jaeger installation, check out our documentation on the topic: [Securing Jaeger Installation](https://www.jaegertracing.io/docs/latest/security/).
