@@ -72,6 +72,7 @@ their GitHub user handles.
   several parts of the stack, must be brought to broader awareness of the
   community via community meetings, GitHub discussions, and slack channels. A
   supermajority (2/3) approval from Maintainers is required for such approvals.
+- We achieve all of this while following [Kubewarden's Code Of Conduct](https://github.com/kubewarden/community/blob/main/CODE_OF_CONDUCT.md).
 
 In general, we prefer that technical issues and maintainer membership are
 amicably worked out between the persons involved. If a dispute cannot be decided
