@@ -177,6 +177,8 @@ installing, running and using Kubewarden.
 | [kubewarden/volumeMounts-policy](https://github.com/kubewarden/volumeMounts-policy)                                               | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | A Kubewarden Policy that controls the usage of \`volumeMounts\`                                                                                  |
 | [kubewarden/volumes-psp-policy](https://github.com/kubewarden/volumes-psp-policy)                                                 | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Replacement for the Kubernetes Pod Security Policy that controls the usage of volumes                                                            |
 
+For policies across **all** of GitHub, see the [`kubewarden-policy`](https://github.com/topics/kubewarden-policy) topic tag.
+
 #### Policies templates
 
 The following repositories are the template the policy authors can use to write
@@ -193,6 +195,8 @@ for more information about how to write policies.
 | [kubewarden/rust-policy-template](https://github.com/kubewarden/rust-policy-template)             | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | A Kubewarden Rust policy template to be used with cargo-generate                                                                    |
 | [kubewarden/swift-policy-template](https://github.com/kubewarden/swift-policy-template)           | [![Sandbox](https://img.shields.io/badge/status-sandbox-red?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#sandbox)             | A template repository to quickly scaffold a Kubewarden policy written with Swift language                                           |
 
+For policy templates across **all** of GitHub, see the [`kubewarden-policy-template`](https://github.com/topics/kubewarden-policy-template) topic tag.
+
 #### Policies SDKs
 
 The following repositories are the SDKs the policy authors can use to write
@@ -204,6 +208,8 @@ their own policies. Checkout the Kubewarden [documentation](https://docs.kubewar
 | [kubewarden/policy-sdk-go](https://github.com/kubewarden/policy-sdk-go)         | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Kubewarden Policy SDK for the Go programming language    |
 | [kubewarden/policy-sdk-rust](https://github.com/kubewarden/policy-sdk-rust)     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Kubewarden Policy SDK for the Rust programming language  |
 | [kubewarden/policy-sdk-swift](https://github.com/kubewarden/policy-sdk-swift)   | [![Sandbox](https://img.shields.io/badge/status-sandbox-red?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#sandbox)             | Kubewarden Policy SDK for the Swift programming language |
+
+For policy SDKs across **all** of GitHub, see the [`kubewarden-policy-sdk`](https://github.com/topics/kubewarden-policy-sdk) topic tag.
 
 ### Special
 
