@@ -1,0 +1,36 @@
+name: Community Meeting Recording
+title: "Publish meeting recording for <MONTH>"
+description: Upload the community meeting recording to the Kubewarden YouTube channel.
+projects: ["kubewarden/6"]
+assignees: ["robertsirc"]
+
+body:
+  - type: markdown
+    attributes:
+      value: "## Publish Community Meeting Recording"
+
+  - type: markdown
+    attributes:
+      value: |
+        The community meeting is a monthly [event](https://teamup.com/ks2bj74dvw132mhjtj) held on [zoom](https://zoom.us/j/9012938262).
+        This issue tracks the upload of the community meeting recording to the official YouTube [channel](https://www.youtube.com/playlist?list=PLfAoTEAPazb6D_TBWZAWZtAnIbK6b7GTi).
+
+  - type: textarea
+    attributes:
+      label: Meeting Agenda
+      description: Based on meeting agenda from the [Kubewarden Office Hours](https://docs.google.com/document/d/1TgPIFKygkR2_vViCSfBEzwDDactfTcedc9fc4AeVJ9w).
+      placeholder: |
+        Example agenda:
+        - Kubewarden 1.18 released
+        - What’s coming next
+      render: markdown
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Recording Link
+      description: Provide the url to download the zoom recording.
+      placeholder: "e.g., https://zoom.us/rec/share/..."
+    validations:
+      required: true
