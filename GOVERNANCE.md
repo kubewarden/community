@@ -17,7 +17,7 @@ to the project, for example:
 - Improving the Kubewarden website.
 - Improving the documentation.
 - Joining discussions on our Slack channels (#kubewarden), social networks (e.g:
-  Twitter/X), or at community meetings.
+  Bluesky and Mastodon), or at community meetings.
 - Evangelizing about the project (e.g. a link on a website or word-of-mouth
   awareness raising).
 
