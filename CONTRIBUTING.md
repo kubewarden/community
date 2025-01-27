@@ -8,7 +8,7 @@ There are different ways you could help us simplify the adoption of policy as co
 
 * Starring our main repository [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller). GitHub stars do matter !
 * Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
-* Following us on [Bluesky](https://bsky.app/profile/kubewarden.bsky.social) or [Mastodon](https://hachyderm.io/@kubewarden).
+* Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
 
 ## Code 
 
