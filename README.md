@@ -1,6 +1,9 @@
 [![CLOMonitor](https://img.shields.io/endpoint?url=https://clomonitor.io/api/projects/cncf/kubewarden/badge)](https://clomonitor.io/projects/cncf/kubewarden)
 [![CNCF Landscape](https://img.shields.io/badge/CNCF%20Landscape-5699C6)](https://landscape.cncf.io/?item=provisioning--security-compliance--kubewarden)
 
+Kubewarden is an open source security project, hosted by the CNCF. As a vendor
+neutral project, we welcome a broad range of contributions.
+
 This repository aims to document the evolution process of The Kubewarden
 Project.
 
