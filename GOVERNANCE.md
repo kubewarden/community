@@ -1,11 +1,11 @@
-
 # GOVERNANCE
 
-This document defines the project governance for Kubewarden.
+This document defines the project governance for Kubewarden. Kubewarden is a
+[vendor neutral](https://contribute.cncf.io/maintainers/community/vendor-neutrality/) CNCF project.
 
 # Roles
 
-### Contributors
+## Contributors
 
 Community members who contribute in concrete ways to the project. Anyone can
 contribute to the project and become a contributor, regardless of their
@@ -24,7 +24,7 @@ to the project, for example:
 As one continues to contribute to the project and engage with the community,
 they may at some point become eligible and desire to be a Maintainer.
 
-### Maintainers
+## Maintainers
 
 Maintainers are first and foremost, committers that have shown they are committed
 to the long term success of the project. They are the planners and designers of
