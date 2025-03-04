@@ -33,6 +33,7 @@ Certification:
 
 ### Metadata
 
+<!-- TODO Remove next paragraph when table is complete. -->
 A table at the top for quick reference information, later used for indexing.
 
 |||
