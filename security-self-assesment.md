@@ -42,8 +42,8 @@
 ### Overview
 
 Kubewarden is a Kubernetes Policy Engine. It aims to be the Universal Policy
-Engine for Kubernetes, by allowing to write its policies in languages that can
-be compiled to WebAssembly, and being modular. Kubewarden offers flexibility
+Engine for Kubernetes, by allowing the writing of its policies in languages that can
+be compiled to WebAssembly, and by being modular. Kubewarden offers flexibility
 for policy admission and enforcement in a Kubernetes environment.
 
 #### Background
@@ -99,7 +99,7 @@ From a security perspective, the key technical actors are:
 6. **OCI Registry**: stores and distributes Kubewarden policies as OCI artifacts,
    separate from the cluster environment.
 7. **kwctl** CLI utility: command-line utility to interact with policies
-   outside of the cluster. It uses the same libraries as the policy-server
+   outside the cluster. It uses the same libraries as the policy-server
    binary. It:
 
    - Pulls, pushes policies from and to OCI registries.
@@ -109,7 +109,7 @@ From a security perspective, the key technical actors are:
      metadata). Annotates policy binaries with metadata. Metadata includes the
      types of the Kubernetes resources the policy targets, and the policy
      capabilities (mutating, context-aware, etc).
-   - Runs policies outside of the cluster. Useful for developing, benchmarking
+   - Runs policies outside the cluster. Useful for developing, benchmarking
      and testing policies in CI for example.
    - Generates YAML manifests for the policy CRs of Kubewarden from the policy
      metadata. This simplifies policy deployment.
@@ -160,7 +160,7 @@ on security checks and sensitive data handling:
 4. The kubewarden-controller reconciles the desired PolicyServers.
    This entails:
 
-   1. Instatiate a policy-server Deployment.
+   1. Instantiate a policy-server Deployment.
    2. Create/Update ConfigMap associated with the PolicyServer that contains a
       list of all policies currently bound to the PolicyServer.
    3. The policy-server binary downloads all policies from the OCI registry
@@ -217,7 +217,7 @@ on security checks and sensitive data handling:
    In addition, each policy has a `spec.contextAwareResources` field that lists
    which resources from the cluster the policy is allowed to query about. In
    case that a policy Wasm module tries to access resources that the Policy CR
-   didn't declare in its `spec.contextAwareResources`, said query is blocked
+   didn't declare in its `spec.contextAwareResources`, that query is blocked
    and reported to the administrators.
 
 9. Audit Scanning:
@@ -246,7 +246,7 @@ on security checks and sensitive data handling:
 
     - Kubewarden Controller generates and manages TLS certificates.
     - Components use these certificates for encrypted communication.
-    - If desired, one can enable mutual TLS or use NetworkPolicies and a CNI to
+    - If needed, one can enable mutual TLS or use NetworkPolicies and a CNI to
       ensure authentication and encrypted communication.
 
 11. Monitoring and Reporting:
@@ -276,7 +276,7 @@ Kubewarden intends to:
   Developers, Policy Distributors, Cluster Operators, and Kubewarden Integrators.
 - Foster transparency, collaboration, and improvement through CNCF membership
   and an open-source community.
-- Maintain a corpus of useful policies, shipped via ArtifactHub.
+- Maintain a collection of useful policies, shipped via ArtifactHub.
 - Be able to run policies and the policy-server binary outside of the cluster
   (see ["raw policies"](https://docs.kubewarden.io/howtos/raw-policies)).
 
@@ -471,18 +471,18 @@ Example case studies:
 
   The operator can deploy more ClusterAdmissionPolicies and ClusterAdmissionPolicyGroups
   that check the totality of the Kubernetes resources, for any type of
-  operation (CREATE, UPDATE, DELETE, etc). This ensures operations into the
+  operation (GET, CREATE, UPDATE, PATCH, DELETE, PROXY). This ensures operations into the
   cluster are safe and compliant. This includes security, compliance (to
   industry standards or company regulations), resource optimization (via
   mutating policies), governance of Kubernetes environments (via labels and
   naming conventions), best practices, image verification, etc.
 
-  The security expectations change in the future, and that was ok to have
-  deployed in the cluster isn't anymore. Yet Kubewarden already accepted those
-  operations in the cluster. What the operator can do is to deploy the Audit
+  There will be changes in security expectations in the future. 
+  What was previously correct to be deployed in the cluster may no longer be correct. 
+  Yet Kubewarden has already accepted those operations in the cluster. In these situations the operator can deploy the Audit
   Scanner feature, a CronJob that runs periodically and evaluates the existing
   resources in the cluster. This ensures the cluster is safe and compliant even
-  with the pass of time.
+  over time.
 
   The operator can configure some or all the policies in `monitor` mode instead
   of `protect` mode, to learn from the state of the cluster without blocking operations.
@@ -500,7 +500,7 @@ Example case studies:
   teams, team administrators, test deployments, etc.
   I allow each Namespace administrator to self-service by letting them deploy
   PolicyServers in their Namespace, along with namespaced AdmissionPolicies and
-  AdmissionPolicyGroups. These arquitecture means that they are in control of
+  AdmissionPolicyGroups. This architecture means that they are in control of
   their PolicyServer and policies, the policies only apply to their Namespace,
   and the resource usage is contained also to their Namespace.
 
@@ -546,7 +546,7 @@ Example case studies:
 
 #### Related Projects / Vendors
 
-We maintain a comparison documentation page with comparisons. Currently,
-it contains a [comparison with OPA Gatekeeper](https://docs.kubewarden.io/explanations/comparisons/opa-comparison).
+We maintain a comparison documentation page. Currently,
+it compares [Kubewarden and OPA Gatekeeper](https://docs.kubewarden.io/explanations/comparisons/opa-comparison).
 
 For Vendors, See the [enterprise](https://docs.kubewarden.io/enterprise) page.
