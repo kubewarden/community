@@ -385,6 +385,9 @@ issues](https://github.com/orgs/kubewarden/projects/6/views/9) and work on at
 least 1 of them per sprint. We have automated checks for vulnerabilities via
 using Dependabot.
 
+From time to time, we perform an audit of the GitHub Actions we use throughout
+our repositories (see [here](https://github.com/kubewarden/kubewarden-controller/issues/1057)).
+
 ### Communication Channels.
 
 Our channels are linked in docs.kubewarden.io, kubewarden.io, and in the
