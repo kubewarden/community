@@ -14,7 +14,7 @@ document processes. It is also a place to make decisions that regard the whole
 structures that span beyond the extent of a single repository.
 
 **Table of Contents**
-
+- [Quickstart](#quickstart) 
 - [Code Of Conduct](#code-of-conduct)
 - [Maintainers](#maintainers)
 - [Roadmap](#roadmap)
@@ -27,6 +27,12 @@ structures that span beyond the extent of a single repository.
   - [Policies](#policies)
   - [Special](#special)
   - [Archived](#archived)
+
+## Quickstart
+
+We recommend you read our Quickstart page at [docs.kubewarden.io](https://docs.kubewarden.io/quick-start)
+to get familiarized with Kubewarden and what it aims to achieve. From then,
+feel free explore the full documentation to understand all its features. 
 
 ## Code Of Conduct
 
