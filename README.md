@@ -31,7 +31,7 @@ structures that span beyond the extent of a single repository.
 ## Quickstart
 
 We recommend you read our Quickstart page at [docs.kubewarden.io](https://docs.kubewarden.io/quick-start)
-to get familiarized with Kubewarden and what it sets to achieve. From then,
+to get familiarized with Kubewarden and what it aims to achieve. From then,
 feel free explore the full documentation to understand all its features. 
 
 ## Code Of Conduct
