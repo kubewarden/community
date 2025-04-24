@@ -1,0 +1,3 @@
+exemptions:
+  - check: trademark_disclaimer
+    reason: "This is not the project website repository. No need to check for the trademark disclaimer"
