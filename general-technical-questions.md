@@ -135,6 +135,40 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 ### Design
 
 - Explain the design principles and best practices the project is following.
+
+  1. **Security by Design**
+
+  Kubewarden enforces policies as WebAssembly (Wasm) modules, running them in isolated sandboxes to ensure secure execution.
+  Policies are distributed as OCI artifacts, supporting signature verification and integration with supply chain security tools like Sigstore and Cosign.
+
+  2. **Kubernetes Native**
+
+  Built to integrate seamlessly with Kubernetes, Kubewarden utilizes native constructs such as Admission Webhooks, Custom Resource Definitions (CRDs), Operators and Dynamic Admission Control.
+  This design ensures that policy enforcement aligns with Kubernetes' architecture and operational paradigms.
+
+  3. **Policy as Code**
+
+  Kubewarden allows policy authors to write policies in various programming languages that compile to Wasm, including Rust, Go, Rego, CEL and more.
+  This flexibility enables developers to use familiar tools and workflows, facilitating testing and integration into CI/CD pipelines and promoting best practices in policy development.
+
+  Kubewarden aims to be the _Universal Policy Engine_ for Kubernetes.
+
+  4. **Observability**
+
+  Kubewarden provides comprehensive observability features, including structured logs, Prometheus metrics, and OpenTelemetry tracing.
+  These capabilities enable operators to monitor policy enforcement, detect anomalies, and gain insights into policy-related events within the cluster.
+
+  5. **Auditing**
+
+  The [Audit Scanner](https://docs.kubewarden.io/explanations/audit-scanner/policy-reports) component continuously evaluates existing resources against defined policies, identifying violations and generating reports.
+  This auditing capability ensures ongoing compliance and assists in maintaining the desired state of the cluster.
+
+  6. **Vendor Neutrality**
+
+  Kubewarden is a [vendor neutral](https://contribute.cncf.io/maintainers/community/vendor-neutrality/) project as defined by the CNCF.
+
+  See https://docs.kubewarden.io/explanations/architecture#design-principles for more details on Kubewarden's architectural principles.
+
 - Outline or link to the project’s architecture requirements? Describe how they differ for Proof of Concept, Development, Test and Production environments, as applicable.
 - Define any specific service dependencies the project relies on in the cluster.
 - Describe how the project implements Identity and Access Management.
@@ -161,15 +195,17 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   The project does not have any requirements for persistent storage for its core application components.
   All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
 
-The Kubewarden policies are stored in OCI registries.
+  The Kubewarden policies are stored in [OCI registries as OCI artifacts](https://docs.kubewarden.io/reference/oci-registries-support.
 
 - Please outline the project’s API Design:
+
   - Describe the project’s API topology and conventions
   - Describe the project defaults
   - Outline any additional configurations from default to make reasonable use of the project
   - Describe any new or changed API types and calls \- including to cloud providers \- that will result from this project being enabled and used
   - Describe compatibility of any new or changed APIs with API servers, including the Kubernetes API server
   - Describe versioning of any new or changed APIs, including how breaking changes are handled
+
 - Describe the project’s release processes, including major, minor and patch releases.
 
   The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized.
