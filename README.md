@@ -14,7 +14,8 @@ document processes. It is also a place to make decisions that regard the whole
 structures that span beyond the extent of a single repository.
 
 **Table of Contents**
-- [Quickstart](#quickstart) 
+
+- [Quickstart](#quickstart)
 - [Code Of Conduct](#code-of-conduct)
 - [Maintainers](#maintainers)
 - [Roadmap](#roadmap)
@@ -32,7 +33,7 @@ structures that span beyond the extent of a single repository.
 
 We recommend you read our Quickstart page at [docs.kubewarden.io](https://docs.kubewarden.io/quick-start)
 to get familiarized with Kubewarden and what it aims to achieve. From then,
-feel free explore the full documentation to understand all its features. 
+feel free explore the full documentation to understand all its features.
 
 ## Code Of Conduct
 
@@ -55,8 +56,7 @@ You can find the list of current maintainers in the
 
 ## Roadmap
 
-We track our roadmap in GitHub. You can see the [milestone roadmap
-here](https://github.com/orgs/kubewarden/projects/6/views/12).
+Information about our roadmap process is available in the [ROADMAP.md](./ROADMAP.md) file.
 
 ## Community
 
