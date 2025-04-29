@@ -136,6 +136,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Explain the design principles and best practices the project is following.
 
+  #### Design principles:
+
   1. **Security by Design**
 
   Kubewarden enforces policies as WebAssembly (Wasm) modules, running them in isolated sandboxes to ensure secure execution.
@@ -167,7 +169,39 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   Kubewarden is a [vendor neutral](https://contribute.cncf.io/maintainers/community/vendor-neutrality/) project as defined by the CNCF.
 
-  See https://docs.kubewarden.io/explanations/architecture#design-principles for more details on Kubewarden's architectural principles.
+  > See https://docs.kubewarden.io/explanations/architecture#design-principles for more details on Kubewarden's architectural principles.
+
+  #### Best practices
+
+  1. **Stay Aligned with Upstream Kubernetes**
+
+  Kubewarden’s CRDs live under `policies.kubewarden.io/v1` and strictly follow Kubernetes API conventions; policy semantics mirror official Kubernetes policies to avoid surprises when upgrading or integrating with native tooling.
+
+  2. **Automate CI/CD Pipelines**
+
+  All core repositories leverage a shared [kubewarden/github-actions](https://github.com/kubewarden/github-actions) toolkit in GitHub Actions to build Wasm modules,
+  generate SBOMs, run unit/integration tests, and publish releases, ensuring consistent quality gates and reproducible artifacts across the project.
+
+  3. **Test for Real-World Scenarios**
+
+  Maintain dedicated end-to-end test suites [kubewarden-end-to-end-tests](https://github.com/kubewarden/kubewarden-end-to-end-tests)
+  and load-testing benchmarks ([load-tests/results](https://github.com/kubewarden/community/blob/main/load-tests/results.md)) to validate policy enforcement under realistic cluster loads and edge conditions before every release.
+
+  4. **Community-Driven Roadmap & Governance**
+
+  Track features, issues, and milestones openly in the [Kubewarden GitHub project](https://github.com/orgs/kubewarden/projects/6), propose and review RFCs in [kubewarden/rfc](https://github.com/kubewarden/rfc),
+  and [host monthly community meetings](https://teamup.com/ks2bj74dvw132mhjtj).
+
+  5. **Comprehensive, Versioned Documentation**
+
+  Provide Quickstarts, Tutorials, Howtos, API references, and upgrade guides all pinned to specific releases so users always view docs matching their software version in [docs.kubewarden.io](https://docs.kubewarden.io).
+
+  6. **Secure Software Supply Chain (SLSA Compliance)**
+
+  Build pipelines generate SPDX SBOMs and SLSA provenance attestations for every Wasm module, container image, and Helm chart.
+  All artifacts are signed with Sigstore’s Cosign and published alongside attestations—enabling fully automated, end-to-end verification of artifact integrity and origin.
+
+  See [Verifying Kubewarden](https://docs.kubewarden.io/tutorials/verifying-kubewarden) and [the SLSA level 3 blogpost](https://www.kubewarden.io/blog/2024/11/kubewarden-1-18-release-slsa-level-3/) for more details.
 
 - Outline or link to the project’s architecture requirements? Describe how they differ for Proof of Concept, Development, Test and Production environments, as applicable.
 - Define any specific service dependencies the project relies on in the cluster.
