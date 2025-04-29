@@ -139,13 +139,13 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Define any specific service dependencies the project relies on in the cluster.
 - Describe how the project implements Identity and Access Management.
 
-The project relies on the native Kubernetes [RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac) feature to control what each component can access.
-Because Kubewarden policies can access resources within the [cluster](https://docs.kubewarden.io/explanations/context-aware-policies), access control is implemented individually for each policy server, which serves as the engine where the policies are executed.
-Therefore, different policy servers running distinct sets of policies can have varying access permissions.
-Furthermore, policies must explicitly declare the resources they intend to access; all other resources are blocked by default. Additionally, policies have read-only access to these declared resources.
+  The project relies on the native Kubernetes [RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac) feature to control what each component can access.
+  Because Kubewarden policies can access resources within the [cluster](https://docs.kubewarden.io/explanations/context-aware-policies), access control is implemented individually for each policy server, which serves as the engine where the policies are executed.
+  Therefore, different policy servers running distinct sets of policies can have varying access permissions.
+  Furthermore, policies must explicitly declare the resources they intend to access; all other resources are blocked by default. Additionally, policies have read-only access to these declared resources.
 
-The same principle applies to the [audit scanner](https://docs.kubewarden.io/explanations/audit-scanner), which audits the running resources in the cluster.
-Cluster operators can also define the service account used by the audit scanner to perform cluster-wide scans.
+  The same principle applies to the [audit scanner](https://docs.kubewarden.io/explanations/audit-scanner), which audits the running resources in the cluster.
+  Cluster operators can also define the service account used by the audit scanner to perform cluster-wide scans.
 
 - Describe how the project has addressed sovereignty.
 - Describe any compliance requirements addressed by the project.
@@ -153,13 +153,16 @@ Cluster operators can also define the service account used by the audit scanner 
 - Describe the project’s resource requirements, including CPU, Network and Memory.
 - Describe the project’s storage requirements, including its use of ephemeral and/or persistent storage.
 
-The Kubewarden project's application components are stateless. Their storage requirements primarily revolve around ephemeral storage for runtime data processing.
+  The Kubewarden project's application components are stateless. Their storage requirements primarily revolve around ephemeral storage for runtime data processing.
 
-On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, which are mounted as files within the pod. During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. These storage options are tied to the lifecycle of the pod and are discarded when the pod is terminated.
+  On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, which are mounted as files within the pod.
+  During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. These storage options are tied to the lifecycle of the pod and are discarded when the pod is terminated.
 
-The project does not have any requirements for persistent storage for its core application components. All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
+  The project does not have any requirements for persistent storage for its core application components.
+  All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
 
 The Kubewarden policies are stored in OCI registries.
+
 - Please outline the project’s API Design:
   - Describe the project’s API topology and conventions
   - Describe the project defaults
@@ -169,9 +172,17 @@ The Kubewarden policies are stored in OCI registries.
   - Describe versioning of any new or changed APIs, including how breaking changes are handled
 - Describe the project’s release processes, including major, minor and patch releases.
 
-The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized. However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart. For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly. The Helm chart's `version` field does not follow the same numbering as the `appVersion`. These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components. Nevertheless, whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field. This is further documented on our [website](https://docs.kubewarden.io/reference/upgrade-path) in the upgrade path documentation.
+  The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized.
+  However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart.
+  For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly.
+  The Helm chart's `version` field does not follow the same numbering as the `appVersion`.
+  These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components.
+  Whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field.
+  This is documented in our docs in the [upgrade path documentation](https://docs.kubewarden.io/reference/upgrade-path).
+  The release process documentation can be found at [this location](https://github.com/kubewarden/helm-charts/blob/main/CONTRIBUTING.md).
 
-Kubewarden policies follow their own independent lifecycle. Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
+  Kubewarden policies follow their own independent lifecycle.
+  Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
 
 ### Installation
 
