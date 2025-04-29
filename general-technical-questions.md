@@ -119,18 +119,18 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   Kubewarden integrates with following projects in the Cloud Native ecosystem:
 
-| Project                                                              | Purpose                                                                                                 | Documentation                                                                             |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [OpenTelemetry](https://github.com/open-telemetry)                   | Provide unified observability.                                                                          | https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs                              |
-| [Prometheus](https://github.com/prometheus/prometheus)               | Collect and stores time-series metrics from the Policy Server.                                          | https://docs.kubewarden.io/howtos/telemetry/metrics-qs                                    |
-| [Grafana](https://github.com/grafana/grafana)                        | Visualize policy metrics through customizable dashboards.                                               | https://docs.kubewarden.io/howtos/telemetry/metrics-qs                                    |
-| [Jaeger](https://github.com/jaegertracing/jaeger)                    | Visualize fine-grained traces about policy evaluations.                                                 | https://docs.kubewarden.io/howtos/telemetry/tracing-qs                                    |
-| [Policy Reporter](https://github.com/kyverno/policy-reporter)        | Visualize policy violations for auditing purposes.                                                      | https://docs.kubewarden.io/explanations/audit-scanner/policy-reports#policy-reporter-ui   |
-| [Sigstore](https://github.com/sigstore/sigstore)                     | Signing of policies.                                                                                    | https://docs.kubewarden.io/howtos/security-hardening/secure-supply-chain#signing-policies |
-|                                                                      | Verification of OCI artifacts within policy logic.                                                      | https://docs.kubewarden.io/reference/spec/host-capabilities/signature-verifier-policies   |
-| [ArgoCD](https://github.com/argoproj/argo-cd)                        | ArgoCD integration.                                                                                     | https://docs.kubewarden.io/howtos/argocd-installation                                     |
-| [Rancher UI Extension](https://github.com/rancher/kubewarden-ui)     | Integrate Kubewarden into Rancher Manager’s UI as a global extension for policy management.             | https://docs.kubewarden.io/howtos/ui-extension/install                                    |
-| [Rancher Fleet Example](https://github.com/kubewarden/fleet-example) | Deploy and manage Kubewarden charts across fleets of clusters using GitOps workflows via Rancher Fleet. | https://docs.kubewarden.io/howtos/Rancher-Fleet                                           |
+  | Project                                                              | Purpose                                                                                                 | Documentation                                                                             |
+  | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+  | [OpenTelemetry](https://github.com/open-telemetry)                   | Provide unified observability.                                                                          | https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs                              |
+  | [Prometheus](https://github.com/prometheus/prometheus)               | Collect and stores time-series metrics from the Policy Server.                                          | https://docs.kubewarden.io/howtos/telemetry/metrics-qs                                    |
+  | [Grafana](https://github.com/grafana/grafana)                        | Visualize policy metrics through customizable dashboards.                                               | https://docs.kubewarden.io/howtos/telemetry/metrics-qs                                    |
+  | [Jaeger](https://github.com/jaegertracing/jaeger)                    | Visualize fine-grained traces about policy evaluations.                                                 | https://docs.kubewarden.io/howtos/telemetry/tracing-qs                                    |
+  | [Policy Reporter](https://github.com/kyverno/policy-reporter)        | Visualize policy violations for auditing purposes.                                                      | https://docs.kubewarden.io/explanations/audit-scanner/policy-reports#policy-reporter-ui   |
+  | [Sigstore](https://github.com/sigstore/sigstore)                     | Signing of policies.                                                                                    | https://docs.kubewarden.io/howtos/security-hardening/secure-supply-chain#signing-policies |
+  |                                                                      | Verification of OCI artifacts within policy logic.                                                      | https://docs.kubewarden.io/reference/spec/host-capabilities/signature-verifier-policies   |
+  | [ArgoCD](https://github.com/argoproj/argo-cd)                        | ArgoCD integration.                                                                                     | https://docs.kubewarden.io/howtos/argocd-installation                                     |
+  | [Rancher UI Extension](https://github.com/rancher/kubewarden-ui)     | Integrate Kubewarden into Rancher Manager’s UI as a global extension for policy management.             | https://docs.kubewarden.io/howtos/ui-extension/install                                    |
+  | [Rancher Fleet Example](https://github.com/kubewarden/fleet-example) | Deploy and manage Kubewarden charts across fleets of clusters using GitOps workflows via Rancher Fleet. | https://docs.kubewarden.io/howtos/Rancher-Fleet                                           |
 
 ### Design
 
@@ -138,6 +138,15 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Outline or link to the project’s architecture requirements? Describe how they differ for Proof of Concept, Development, Test and Production environments, as applicable.
 - Define any specific service dependencies the project relies on in the cluster.
 - Describe how the project implements Identity and Access Management.
+
+The project relies on the native Kubernetes [RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac) feature to control what each component can access.
+Because Kubewarden policies can access resources within the [cluster](https://docs.kubewarden.io/explanations/context-aware-policies), access control is implemented individually for each policy server, which serves as the engine where the policies are executed.
+Therefore, different policy servers running distinct sets of policies can have varying access permissions.
+Furthermore, policies must explicitly declare the resources they intend to access; all other resources are blocked by default. Additionally, policies have read-only access to these declared resources.
+
+The same principle applies to the [audit scanner](https://docs.kubewarden.io/explanations/audit-scanner), which audits the running resources in the cluster.
+Cluster operators can also define the service account used by the audit scanner to perform cluster-wide scans.
+
 - Describe how the project has addressed sovereignty.
 - Describe any compliance requirements addressed by the project.
 - Describe the project’s High Availability requirements.
