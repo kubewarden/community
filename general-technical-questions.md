@@ -161,6 +161,10 @@ Cluster operators can also define the service account used by the audit scanner 
   - Describe versioning of any new or changed APIs, including how breaking changes are handled
 - Describe the project’s release processes, including major, minor and patch releases.
 
+The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized. However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart. For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly. The Helm chart's `version` field does not follow the same numbering as the `appVersion`. These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components. Nevertheless, whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field. This is further documented on our [website](https://docs.kubewarden.io/reference/upgrade-path) in the upgrade path documentation.
+
+Kubewarden policies follow their own independent lifecycle. Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
+
 ### Installation
 
 - Describe how the project is installed and initialized, e.g. a minimal install with a few lines of code or does it require more complex integration and configuration?
