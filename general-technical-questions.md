@@ -65,29 +65,45 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 ### Scope
 
 - Describe the roadmap process, how scope is determined for mid to long term features, as well as how the roadmap maps back to current contributions and maintainer ladder?
+
   The roadmap is determined by the maintainers and contributors of the project. It is a collaborative process that involves discussions and feedback from the community. The milestones are tracked via GitHub milestones and visible in the [Kubewarden's GitHub project](https://github.com/orgs/kubewarden/projects/6/views/12).
+
 - Describe the target persona or user(s) for the project?
+
   The documented target personas for Kubewarden are available at: https://docs.kubewarden.io/personas
+
 - Explain the primary use case for the project. What additional use cases are supported by the project?
+
   Use cases are documented here: https://docs.kubewarden.io/#use-cases
+
 - Explain which use cases have been identified as unsupported by the project.
+
   N/A
+
 - Describe the intended types of organizations who would benefit from adopting this project. (i.e. financial services, any software manufacturer, organizations providing platform engineering services)?
+
   Enterprise organizations, startups, SaaS provides, regulated industries, financial services and any organization running Kubernetes at scale.
+
 - Please describe any completed end user research and link to any reports.
+
   N/A
 
 ### Usability
 
 - How should the target personas interact with your project?
+
   - CLI: [kwctl](https://github.com/kubewarden/kwctl) helps with publishing, managing and testing policies.
   - Helm: [Charts](https://github.com/kubewarden/helm-charts) are available for installing Kubewarden in Kubernetes clusters.
   - Kubernetes CRDs: `ClusterAdmissionPolicy`, `AdmissionPolicy`, `ClusterAdmissionPolicyGroup`, `AdmissionPolicyGroup` and `PolicyServer` documented at https://docs.kubewarden.io/reference/CRDs
+
 - Describe the user experience (UX) and user interface (UI) of the project.
+
   Kubewarden's user experience is centered around the `kwctl` CLI and a collection of Kubernetes CRDs.
   While the project does not include a web UI, it can be integrated with external tools that offer graphical interfaces for policy management, reporting and observability.
   See the following question for more details.
+
 - Describe how this project integrates with other projects in a production environment.
+
   Kubewarden integrates with following projects in the Cloud Native ecosystem:
 
 | Project                                                              | Purpose                                                                                                 | Documentation                                                                             |
@@ -136,7 +152,9 @@ The project provides guidande on how to validate the installation via the creati
 ### Security
 
 - Please provide a link to the project’s cloud native [security self assessment](https://tag-security.cncf.io/community/assessments/).
+
   Security self-assessment: https://github.com/kubewarden/community/blob/main/security-self-assesment.md
+
 - Please review the [Cloud Native Security Tenets](https://github.com/cncf/tag-security/blob/main/security-whitepaper/secure-defaults-cloud-native-8.md) from TAG Security.
   - How are you satisfying the tenets of cloud native security projects?
   - Describe how each of the cloud native principles apply to your project.
