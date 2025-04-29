@@ -78,7 +78,20 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Explain which use cases have been identified as unsupported by the project.
 
-  N/A
+  Kubewarden doesn't intend to:
+
+  - Replace Kubernetes built-in security features, but complement them:
+    - We provide migration from PSPs.
+    - One can re-use ValidatingAdmissionPolicies and CEL policies with our
+      `cel-policy`.
+    - Kubewarden policies can be mutating, while Pod Security Admission cannot.
+    - Kubewarden policies benefit from the Kubewarden stack features (audit
+      scanner, telemetry, CRD management).
+  - Provide runtime security like intrusion detection or runtime container
+    isolation.
+  - Provide host system protection of clusters.
+  - Provide infinite policy execution flexibility. To prevent DoS attacks,
+    policies' processing times are limited.
 
 - Describe the intended types of organizations who would benefit from adopting this project. (i.e. financial services, any software manufacturer, organizations providing platform engineering services)?
 
