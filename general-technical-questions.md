@@ -66,7 +66,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe the roadmap process, how scope is determined for mid to long term features, as well as how the roadmap maps back to current contributions and maintainer ladder?
 
-  The roadmap is determined by the maintainers and contributors of the project. It is a collaborative process that involves discussions and feedback from the community. The milestones are tracked via GitHub milestones and visible in the [Kubewarden's GitHub project](https://github.com/orgs/kubewarden/projects/6/views/12).
+  Information about our roadmap process is available in the [ROADMAP.md](https://github.com/kubewarden/community/blob/main/ROADMAP.md) document in the community repository.
 
 - Describe the target persona or user(s) for the project?
 
