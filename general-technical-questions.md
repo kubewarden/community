@@ -152,6 +152,14 @@ Cluster operators can also define the service account used by the audit scanner 
 - Describe the project’s High Availability requirements.
 - Describe the project’s resource requirements, including CPU, Network and Memory.
 - Describe the project’s storage requirements, including its use of ephemeral and/or persistent storage.
+
+The Kubewarden project's application components are stateless. Their storage requirements primarily revolve around ephemeral storage for runtime data processing.
+
+On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, which are mounted as files within the pod. During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. These storage options are tied to the lifecycle of the pod and are discarded when the pod is terminated.
+
+The project does not have any requirements for persistent storage for its core application components. All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
+
+The Kubewarden policies are stored in OCI registries.
 - Please outline the project’s API Design:
   - Describe the project’s API topology and conventions
   - Describe the project defaults
