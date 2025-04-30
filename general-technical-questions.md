@@ -68,6 +68,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   Information about our roadmap process is available in the [ROADMAP.md](https://github.com/kubewarden/community/blob/main/ROADMAP.md) document in the community repository.
 
+  The maintainer ladder is at [MAINTAINERS.md](https://github.com/kubewarden/community/blob/main/MAINTAINERS.md).
+
 - Describe the target persona or user(s) for the project?
 
   The documented target personas for Kubewarden are available at: https://docs.kubewarden.io/personas
@@ -119,6 +121,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   Kubewarden integrates with following projects in the Cloud Native ecosystem:
 
+  #### Integrations
+
   | Project                                                              | Purpose                                                                                                 | Documentation                                                                             |
   | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
   | [OpenTelemetry](https://github.com/open-telemetry)                   | Provide unified observability.                                                                          | https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs                              |
@@ -138,38 +142,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   #### Design principles:
 
-  1. **Security by Design**
-
-  Kubewarden enforces policies as WebAssembly (Wasm) modules, running them in isolated sandboxes to ensure secure execution.
-  Policies are distributed as OCI artifacts, supporting signature verification and integration with supply chain security tools like Sigstore and Cosign.
-
-  2. **Kubernetes Native**
-
-  Built to integrate seamlessly with Kubernetes, Kubewarden utilizes native constructs such as Admission Webhooks, Custom Resource Definitions (CRDs), Operators and Dynamic Admission Control.
-  This design ensures that policy enforcement aligns with Kubernetes' architecture and operational paradigms.
-
-  3. **Policy as Code**
-
-  Kubewarden allows policy authors to write policies in various programming languages that compile to Wasm, including Rust, Go, Rego, CEL and more.
-  This flexibility enables developers to use familiar tools and workflows, facilitating testing and integration into CI/CD pipelines and promoting best practices in policy development.
-
-  Kubewarden aims to be the _Universal Policy Engine_ for Kubernetes.
-
-  4. **Observability**
-
-  Kubewarden provides comprehensive observability features, including structured logs, Prometheus metrics, and OpenTelemetry tracing.
-  These capabilities enable operators to monitor policy enforcement, detect anomalies, and gain insights into policy-related events within the cluster.
-
-  5. **Auditing**
-
-  The [Audit Scanner](https://docs.kubewarden.io/explanations/audit-scanner/policy-reports) component continuously evaluates existing resources against defined policies, identifying violations and generating reports.
-  This auditing capability ensures ongoing compliance and assists in maintaining the desired state of the cluster.
-
-  6. **Vendor Neutrality**
-
-  Kubewarden is a [vendor neutral](https://contribute.cncf.io/maintainers/community/vendor-neutrality/) project as defined by the CNCF.
-
-  > See https://docs.kubewarden.io/explanations/architecture#design-principles for more details on Kubewarden's architectural principles.
+  Kubewarden's design principles can be found at: https://docs.kubewarden.io/explanations/architecture#design-principles.
 
   #### Best practices
 
@@ -200,11 +173,27 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   Build pipelines generate SPDX SBOMs and SLSA provenance attestations for every Wasm module, container image, and Helm chart.
   All artifacts are signed with Sigstore’s Cosign and published alongside attestations—enabling fully automated, end-to-end verification of artifact integrity and origin.
-
   See [Verifying Kubewarden](https://docs.kubewarden.io/tutorials/verifying-kubewarden) and [the SLSA level 3 blogpost](https://www.kubewarden.io/blog/2024/11/kubewarden-1-18-release-slsa-level-3/) for more details.
 
 - Outline or link to the project’s architecture requirements? Describe how they differ for Proof of Concept, Development, Test and Production environments, as applicable.
+
+  The project architecture documentation is available at: https://docs.kubewarden.io/explanations/architecture
+
+  For a production environment, multiple replicas of the `kubewarden-controller` and `policy-server` components should be deployed to ensure high availability and fault tolerance.
+  Also, multiple policy server instances can be deployed to handle different sets of policies, allowing for better resource allocation and isolation.
+  See [Configuring Kubewarden stack for production](https://docs.kubewarden.io/howtos/production-deployments) and [Configuring Policy Server for production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments) for more details.
+
+  End-to-end and load tests are run against a production-like environment.
+  Development and integration test environments are typically single-node clusters, where both the `kubewarden-controller` and `policy-server` components are deployed as single replicas.
+
 - Define any specific service dependencies the project relies on in the cluster.
+
+  The project does not have any specific service dependencies in the cluster.
+  Optionally, the project can be integrated with external services for observability, audit visualization, and policy management.
+
+  See [Integrations](#integrations) for the list of supported integrations.
+  See [Dependecy Matrix](https://docs.kubewarden.io/reference/dependency-matrix) for the list of dependencies.
+
 - Describe how the project implements Identity and Access Management.
 
   The project relies on the native Kubernetes [RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac) feature to control what each component can access.
@@ -216,12 +205,38 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   Cluster operators can also define the service account used by the audit scanner to perform cluster-wide scans.
 
 - Describe how the project has addressed sovereignty.
+
+  The project does not have any specific requirements for data sovereignty.
+  However, the policies can be designed to ensure that sensitive data is not sent outside the cluster or to external services.
+  The policies can also be configured to restrict access to specific namespaces or resources within the cluster.
+
 - Describe any compliance requirements addressed by the project.
+
+  To date, we haven't formally certified Kubewarden to meet any security standards (such as PCI-DSS, COBIT, ISO, GDPR, etc.).
+  However, policies from our catalog can be used for providing certification of other workloads in Kubernetes clusters.
+  See https://github.com/kubewarden/community/blob/main/security-self-assesment.md#project-compliance for more information.
+
 - Describe the project’s High Availability requirements.
+
+  Kubewarden leverages the inherent High Availability (HA) capabilities of Kubernetes by deploying its core components as standard Kubernetes Deployments.
+  This design allows users to achieve HA through standard Kubernetes mechanisms.
+
+  To ensure the availability of Kubewarden, users should configure the Kubewarden Deployments (for components like the controller and policy servers) with multiple replicas.
+  This ensures that even if one or more instances fail, a minimum number of replicas remain operational, preventing service disruption.
+  Kubewarden also offers documentation to help users make their setup more reliable by using common Kubernetes features such as `PodDisruptionBudgets`, Affinity and Anti-Affinity rules, resource limits and requests, and more.
+
+  See [Configuring Kubewarden stack for production](https://docs.kubewarden.io/howtos/production-deployments) and
+  [Configuring Policy Server for production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments).
+
 - Describe the project’s resource requirements, including CPU, Network and Memory.
+
+  Resource requirements vary depending on the number and complexity of policies deployed.
+  `kubewarden-controller` and `audit-scanner`limits and requests are set using Helm chart values, default values can be found here: https://github.com/kubewarden/helm-charts/blob/b8d8f357d3ae0b677ff7c43582413f24777834e8/charts/kubewarden-controller/values.yaml#L225
+  The `policy-server` component's limits and requests can be set by following the documentation at [Production deployments](https://docs.kubewarden.io/howtos/policy-servers/production-deployments)
+
 - Describe the project’s storage requirements, including its use of ephemeral and/or persistent storage.
 
-  The Kubewarden project's application components are stateless. Their storage requirements primarily revolve around ephemeral storage for runtime data processing.
+  The Kubewarden project's application components are stateless. Their storage requirements revolve around ephemeral storage for runtime data processing.
 
   On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, which are mounted as files within the pod.
   During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. These storage options are tied to the lifecycle of the pod and are discarded when the pod is terminated.
@@ -229,7 +244,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   The project does not have any requirements for persistent storage for its core application components.
   All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
 
-  The Kubewarden policies are stored in [OCI registries as OCI artifacts](https://docs.kubewarden.io/reference/oci-registries-support.
+  The Kubewarden policies are stored in [OCI registries as OCI artifacts](https://docs.kubewarden.io/reference/oci-registries-support).
 
 - Please outline the project’s API Design:
 
@@ -258,11 +273,11 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe how the project is installed and initialized, e.g. a minimal install with a few lines of code or does it require more complex integration and configuration?
 
-Installation via Helm chart: https://docs.kubewarden.io/quick-start#installation
+  Installation via Helm chart: https://docs.kubewarden.io/quick-start#installation
 
 - How does an adopter test and validate the installation?
 
-The project provides guidande on how to validate the installation via the creation of a policy: https://docs.kubewarden.io/quick-start#example-enforce-your-first-policy
+  The project provides guidance on how to validate the installation via the creation of a policy: https://docs.kubewarden.io/quick-start#example-enforce-your-first-policy
 
 ### Security
 
@@ -275,12 +290,46 @@ The project provides guidande on how to validate the installation via the creati
   - Describe how each of the cloud native principles apply to your project.
   - How do you recommend users alter security defaults in order to "loosen" the security of the project? Please link to any documentation the project has written concerning these use cases.
 - Security Hygiene
+
   - Please describe the frameworks, practices and procedures the project uses to maintain the basic health and security of the project.
+
+    **Dependency management**
+
+    Kubewarden uses Renovatebot to keep dependencies up to date in all the repositories.
+
+    **Vulnerability scanning**
+
+    Kubewarden's container images are scanned in ArtifactHub.
+    The repositories use GitHub's security features to scan for vulnerabilities in dependencies, alongside language-specific tools like `cargo-audit` for Rust projects and `govulncheck` for Go projects.
+
+    **SLSA 3 compliance**
+    Kubewarden is SLSA3 compliant. The project generates SBOMs and provenance attestations for every Wasm module, container image, and Helm chart.
+
   - Describe how the project has evaluated which features will be a security risk to users if they are not maintained by the project?
+
+    N/A
+
 - Cloud Native Threat Modeling
+
   - Explain the least minimal privileges required by the project and reasons for additional privileges.
-  - Describe how the project is handling certificate rotation and mitigates any issues with certificates.
-  - Describe how the project is following and implementing [secure software supply chain best practices](https://project.linuxfoundation.org/hubfs/CNCF_SSCP_v1.pdf)
+
+  RBAC roles needed by Kubewarden components are documneted at [Security Hardening - RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac).
+
+  Kubewarden is also able to run in a Namspace where the restricted Pod Security Standards are enforced.
+  Please refer to the [Security Hardening - Securityy Contexts](https://docs.kubewarden.io/howtos/security-hardening#pod-security-standards) for more information.
+
+- Describe how the project is handling certificate rotation and mitigates any issues with certificates.
+
+  Kubewarden has its own certificate rotation mechanism. The CA root and the leaf certificates are both rotated automatically.
+  This is managed by the `kubewarden-controller` component, and it is documented at [Certificate Rotation](https://docs.kubewarden.io/howtos/security-hardening#certificate-rotation).
+
+- Describe how the project is following and implementing [secure software supply chain best practices](https://project.linuxfoundation.org/hubfs/CNCF_SSCP_v1.pdf)
+
+  Kubewarden is SLSA Level 3 compliant. The project generates SBOMs and provenance attestations for every Wasm module, container image, and Helm chart.
+  All artifacts are signed with Sigstore’s Cosign and published alongside attestations—enabling fully automated, end-to-end verification of artifact integrity and origin.
+  See [Verifying Kubewarden](https://docs.kubewarden.io/tutorials/verifying-kubewarden) and [the SLSA level 3 blogpost](https://www.kubewarden.io/blog/2024/11/kubewarden-1-18-release-slsa-level-3/) for more details.
+
+  Also, Kubewarden policies are capable of verifying the signatures of OCI artifacts, via the [Signature Verifier](https://docs.kubewarden.io/reference/spec/host-capabilities/signature-verifier-policies) capability.
 
 ## Day 1 \- Installation and Deployment Phase
 
