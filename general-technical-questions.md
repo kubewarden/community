@@ -373,22 +373,88 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe what project installation and configuration look like.
 
+  Installation and configuration are managed using Helm charts.
+
+  A [quick start guide](https://docs.kubewarden.io/quick-start) is available to help users through the initial setup.
+
+  Additional installation and configuration resources include:
+
+  - [Helm chart documentation](https://charts.kubewarden.io/)
+  - [Guidance for production deployments](https://docs.kubewarden.io/howtos/production-deployments)
+  - [Instructions for configuring Policy Server in production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments)
+  - [Security hardening best practices](https://docs.kubewarden.io/howtos/security-hardening)
+  - [Air-gapped environment installation](https://docs.kubewarden.io/howtos/airgap-installation)
+
 ### Project Enablement and Rollback
 
 - How can this project be enabled or disabled in a live cluster? Please describe any downtime required of the control plane or nodes.
+
+  The project can be enabled or disabled by following the [Uninstall process documentation](https://docs.kubewarden.io/howtos/uninstall) instructions.
+  The project can be uninstalled without downtime, as it does not require any changes to the control plane or nodes.
+
+  In critical situations, operations teams may need to carry out actions that Kubewarden would normally block.
+  To support this, Kubewarden offers an [emergency disable procedure](https://docs.kubewarden.io/howtos/emergency-disable) that allows the policy engine to be temporarily turned off.
+
 - Describe how enabling the project changes any default behavior of the cluster or running workloads.
+
+  Kubewarden acts as an [admission controller](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/), enforcing policies on Kubernetes resources during their creation, deletion and modification.
+  As a result, it can intercept and either block or mutate requests to the Kubernetes API server according to the policies defined by the user.
+
 - Describe how the project tests enablement and disablement.
+
+  Installating and uninstalling Kubewarden is part of the [Kubewarden end-to-end testing suite](https://github.com/kubewarden/kubewarden-end-to-end-tests/).
+
 - How does the project clean up any resources created, including CRDs?
+
+  See the [Uninstall process documentation](https://docs.kubewarden.io/howtos/uninstall) instructions.
 
 ### Rollout, Upgrade and Rollback Planning
 
 - How does the project intend to provide and maintain compatibility with infrastructure and orchestration management tools like Kubernetes and with what frequency?
+
+  Kubewarden maintains Kubernetes compatibility by following standard Kubernetes patterns.
+  It uses the Kubernetes Dynamic Admission Control mechanism, stable v1 APIs, and regular dependency updates to ensure compatibility with the latest Kubernetes versions.
+
 - Describe how the project handles rollback procedures.
+
+  Kubewarden does not include a dedicated rollback procedure and is intended to support forward-only upgrades.
+  While technically possible, reverting to a previous version of the project is not recommended.
+
 - How can a rollout or rollback fail? Describe any impact to already running workloads.
+
+  Kubewarden does not support rollback procedures.
+
+  During rollout, potential failure scenarios include infrastructure issues, misconfigurations in the PolicyServer, software bugs, and certificate-related problems.
+  The impact on running workloads is typically minimal: existing validations remain functional because Kubewarden relies on Kubernetes' built-in deployment rollout mechanism,
+  which ensures that the previous version of the application stays available until the new version is fully deployed and verified.
+
 - Describe any specific metrics that should inform a rollback.
+
+  The project does not have specific metrics to inform a rollback.
+  However, the project provides a set of [observability metrics](https://docs.kubewarden.io/howtos/telemetry/metrics-qs) that can be used to monitor the health of the system.
+
 - Explain how upgrades and rollbacks were tested and how the upgrade-\>downgrade-\>upgrade path was tested.
+
+  At the time of writing, the project has not been tested for downgrade scenarios.
+  Upgrade paths are tested with each release through our [end-to-end testing suite](https://github.com/kubewarden/kubewarden-end-to-end-tests/).
+
 - Explain how the project informs users of deprecations and removals of features and APIs.
+
+  Kubewarden communicates deprecations and removals through release notes, blog announcements, and documentation updates.
+  The project follows standard Kubernetes conventions for API lifecycle management.
+  Additionally, Kubewarden provides a specialized policy that can detect usage of deprecated Kubernetes APIs, helping users identify potential compatibility issues in their configurations.
+
+  For deprecation handling:
+
+  - [Deprecated API Versions Policy](https://github.com/kubewarden/deprecated-api-versions-policy)
+  - [Kubernetes Deprecation Guide (For Reference)](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
+
 - Explain how the project permits utilization of alpha and beta capabilities as part of a rollout.
+
+  Kubewarden clearly indicates API maturity through versioning (v1alpha, v1beta, v1).
+  Experimental features typically require explicit opt-in through configuration, allowing users to test new features while being aware of potential instability.
+
+  Documentation for experimental features, including experimental policies, includes appropriate warnings and limitations, enabling users to make informed decisions based on their risk tolerance.
 
 ## Day 2 \- Day-to-Day Operations Phase
 
