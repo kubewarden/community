@@ -249,25 +249,61 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Please outline the project’s API Design:
 
   - Describe the project’s API topology and conventions
+
+    Kubwarden integrates with Kubernetes by providing a set of CRDs.
+    The CRDs are documented at https://docs.kubewarden.io/reference/CRDs.
+
+    The API follows standard Kubernetes extension patterns and it is organzizd in groups and versions.
+
   - Describe the project defaults
+
+    The default values for a Kubewarden Helm installation are available at https://github.com/kubewarden/helm-charts/blob/main/charts/kubewarden-controller/values.yaml.
+    These defaults provide a secure deployment configuration.
+    Kubewarden provides the [`kubewarden-defaults`](https://docs.kubewarden.io/howtos/security-hardening#kubewarden-defaults-helm-chart) chart, which deploys a default policy server and optionally includes a set of recommended policies.
+
+    Other key defaults include:
+
+    - **Default Policy Server**: policies resources without a specified `spec.policyServer` will be automatically assigned to the default policy server.
+    - **Default Policy Mode**: `protect` (enforcing mode) is the default policy mode for all policies.
+    - **Default Failure Policy**: `Fail` by default (admission failures cause the API request to be rejected).
+    - **Background Audit**: `enabled` by default (policies are audited in the background to ensure compliance of existing resources).
+    - **Default Policy Server Timeout**: 10 seconds is the default timeout for policy server requests.
+
   - Outline any additional configurations from default to make reasonable use of the project
+
+    Guidance for configuring Kubewarden for production use is available in the [Production deployments](https://docs.kubewarden.io/howtos/production-deployments) and [Configuring Policy Server for production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments) documentation.
+    Recommendations for enhancing security are provided in the [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) documentation.
+
   - Describe any new or changed API types and calls \- including to cloud providers \- that will result from this project being enabled and used
+
+  N/A
+
   - Describe compatibility of any new or changed APIs with API servers, including the Kubernetes API server
+
+    The Kubewarden API server has no specific compatibility requirements.
+    Features that depend on a particular Kubernetes version are automatically disabled at runtime if the cluster does not meet the required version.
+
   - Describe versioning of any new or changed APIs, including how breaking changes are handled
 
-- Describe the project’s release processes, including major, minor and patch releases.
+    The project follows [semantic versioning](https://semver.org/) for its releases; additional details are provided in the following question.
+    For CRDs, the stable version in use is `v1`. In line with Kubernetes conventions, breaking changes to the API trigger a new version, whereas non-breaking enhancements are introduced within the existing version.
+    CRDs may also be released as alpha or beta versions before reaching stability.
+    Alpha versions (`v1alphaX`) are considered experimental and may undergo significant changes or be removed entirely.
+    Beta versions (`v1betaX`) are more stable, with fewer breaking changes expected, but are still subject to refinement before becoming stable.
 
-  The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized.
-  However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart.
-  For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly.
-  The Helm chart's `version` field does not follow the same numbering as the `appVersion`.
-  These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components.
-  Whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field.
-  This is documented in our docs in the [upgrade path documentation](https://docs.kubewarden.io/reference/upgrade-path).
-  The release process documentation can be found at [this location](https://github.com/kubewarden/helm-charts/blob/main/CONTRIBUTING.md).
+  - Describe the project’s release processes, including major, minor and patch releases.
 
-  Kubewarden policies follow their own independent lifecycle.
-  Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
+    The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized.
+    However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart.
+    For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly.
+    The Helm chart's `version` field does not follow the same numbering as the `appVersion`.
+    These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components.
+    Whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field.
+    This is documented in our docs in the [upgrade path documentation](https://docs.kubewarden.io/reference/upgrade-path).
+    The release process documentation can be found at [this location](https://github.com/kubewarden/helm-charts/blob/main/CONTRIBUTING.md).
+
+    Kubewarden policies follow their own independent lifecycle.
+    Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
 
 ### Installation
 
