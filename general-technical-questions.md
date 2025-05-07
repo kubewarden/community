@@ -276,7 +276,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - Describe any new or changed API types and calls \- including to cloud providers \- that will result from this project being enabled and used
 
-  N/A
+    N/A
 
   - Describe compatibility of any new or changed APIs with API servers, including the Kubernetes API server
 
@@ -322,9 +322,74 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   Security self-assessment: https://github.com/kubewarden/community/blob/main/security-self-assesment.md
 
 - Please review the [Cloud Native Security Tenets](https://github.com/cncf/tag-security/blob/main/community/resources/security-whitepaper/secure-defaults-cloud-native-8.md) from TAG Security.
+
   - How are you satisfying the tenets of cloud native security projects?
-  - Describe how each of the cloud native principles apply to your project.
-  - How do you recommend users alter security defaults in order to "loosen" the security of the project? Please link to any documentation the project has written concerning these use cases.
+
+    1. **Make security a design requirement**
+
+       - **Threat-model integration**: The Kubewarden team continuously evaluates the controller and policy server against the Kubernetes SIG Security Admission Control Threat Model to bake security into every release.
+
+         See the ([Threat Model reference documentation](https://docs.kubewarden.io/reference/threat-model)) reference documentation.
+
+       - **WebAsembly Sandboxing**: Kubewarden executes policies inside isolated WebAssembly sandboxes.
+         This architecture ensures that policies are confined and cannot interfere with each other or the host system, significantly reducing the attack surface.
+       - **Context-aware policies**: Policies can be designed to only access the resources they need, and they are limited to the permissions granted to the policy server.
+         This ensures that even if a policy is compromised, it cannot access resources outside its intended scope.
+
+    2. **Applying secure configuration has the best user experience**
+
+       - **Helm Charts with Secure Defaults**: The Kubewarden Helm charts come with secure defaults out-of-the-box, including the `kubewarden-defaults` chart that automatically creates a default poliyserver and installs recommended security policies.
+         TLS is enabled by default for all components, and the `kubewarden-controller` is configured to use a secure service account with limited permissions.
+       - **Clear docs and guides**: Step-by-step Quick Start and "Security hardening" pages ensure that following secure defaults takes no more time than a typical Helm install or kubectl apply.
+         This includes mTLS with the Kubernetes API server, RBAC, and Security Contexts.
+
+       See the [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) and the [Webhooks hardening](https://docs.kubewarden.io/reference/security-hardening/webhooks-hardening) documentation for more details.
+
+    3. **Selecting insecure configuration is a conscious decision**
+
+       By default the Kubewarden components are deployed with secure defaults.
+
+       For policies the user can:
+
+       - **Allow insecure sources**: Kubewarden enforces secure connections (HTTPS with trusted certificates) when pulling policy artifacts from registries.
+         However, the user can choose to allow connosections to registries using untrusted certficates or even without TLS by [explicitly configuring the policy server to do so](https://docs.kubewarden.io/howtos/policy-servers/custom-cas#insecure-sources).
+       - **Use the monitor mode**:
+         Kubewarden policies operate in two modes: `protect` and `monitor`. By default, policies are deployed in `protect` mode, where they actively enforce rules by accepting, rejecting, or mutating requests.
+         The user can choose to deploy policies in `monitor` mode, where they only log the actions they would have taken without enforcing them.
+
+    4. **Transition from insecure to secure state is possible**
+
+       - **Hardening**: The Kubewarden project provides a [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) guide that helps users transition from a default secure state to a more secure state.
+       - **Protect mode**: Policies in `monitor` mode can be transitioned to `protect` mode at any time. However, the opposite is not possible.
+         This is a deliberate design choice to prevent users from unintentionally downgrading the security posture of their policies.
+       - **Controlled policy adoption**: As custom resources, policies can be applied gradually; starting with specific namespaces via `namespaceSelector`, `matchConditions`, and `rules`, then expanding to broader scopes when ready.
+
+    5. **Secure defaults are inherited**
+
+       - **Kubernetes Integration**: Kubewarden integrates seamlessly with Kubernetes through admission webhooks, inheriting Kubernetes' authentication and authorization mechanisms.
+       - **TLS Inheritance**: By using TLS for all communications, Kubewarden inherits the security properties of the TLS protocol.
+       - **WebAssembly Security**: Policies inherit the security features of WebAssembly, including memory isolation and sandboxing, without needing to implement these protections themselves.
+
+    6. **Exception lists have first class support**
+
+       - **Policy exceptions**: Kubewarden policies can be configured to allow exceptions for specific resources or namespaces using `namespaceSelector` and `matchConditions`.
+         This allows users to define exceptions without compromising the overall security posture of the cluster.
+       - **Audit scanner exceptions**: The audit scanner can be configured to ignore specific resources or namespaces, allowing users to focus on the most critical areas of their cluster.
+       - **Multi-tenancy**: The architecture supports deploying multiple PolicyServers, allowing different security configurations for different workloads or tenants.
+
+    7. **Secure defaults protect against pervasive vulnerability exploits**
+
+    8. **Security limitations of a system are explainable**
+
+       - **Transparent Architecture**: [The Kubewarden architecture is clearly documented](https://docs.kubewarden.io/explanations/architecture), making security boundaries and assumptions explicit.
+       - **Threat Model Assessment**: The project maintains a public threat model assessment, increasing transparency about security considerations.
+       - **Alternative Recommendations**: When certain security controls aren't possible, Kubewarden documentation provides alternative approaches and recommendations.
+
+- Describe how each of the cloud native principles apply to your project.
+- How do you recommend users alter security defaults in order to "loosen" the security of the project? Please link to any documentation the project has written concerning these use cases.
+
+  Use case [Allow insecure sources](https://docs.kubewarden.io/howtos/policy-servers/custom-cas#insecure-sources)
+
 - Security Hygiene
 
   - Please describe the frameworks, practices and procedures the project uses to maintain the basic health and security of the project.
