@@ -266,7 +266,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     - **Default Policy Server**: policies resources without a specified `spec.policyServer` are automatically assigned to the default policy server.
     - **Default Policy Mode**: `protect` (enforcing mode) is the default policy mode for all policies.
-    - **Default Failure Policy**: `Fail` by default (admission failures cause the API request to be rejected).
+    - **Default Failure Policy**: `Fail` by default (admission failures cause rejection of the API request).
     - **Background Audit**: `enabled` by default (policies are audited in the background to check compliance of existing resources).
     - **Default Policy Server Timeout**: 10 seconds is the default timeout for policy server requests.
 
