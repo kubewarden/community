@@ -72,7 +72,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe the target persona or user(s) for the project?
 
-  The documented target personas for Kubewarden are available at: https://docs.kubewarden.io/personas
+  The documented target personas for Kubewarden are available at: https://docs.kubewarden.io/personas.
 
 - Explain the primary use case for the project. What additional use cases are supported by the project?
 
