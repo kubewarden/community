@@ -335,7 +335,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
        - **WebAsembly Sandboxing**: Kubewarden executes policies inside isolated WebAssembly sandboxes.
          This architecture means that policies are confined and can't interfere with each other, or the host system, so reducing the attack surface.
-       - **Context-aware policies**: Policies can be designed to only access the resources they need, and are limited to the permissions granted to the policy server.
+       - **Context-aware policies**: Policies can be designed to only access the resources they need in read-only, and are limited to the permissions granted to the policy server.
          This ensures that even if a policy is compromised, it cannot access resources outside its intended scope.
 
     2. **Applying secure configuration has the best user experience**
