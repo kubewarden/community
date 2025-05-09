@@ -264,16 +264,16 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     Other key defaults include:
 
-    - **Default Policy Server**: policies resources without a specified `spec.policyServer` will be automatically assigned to the default policy server.
+    - **Default Policy Server**: policies resources without a specified `spec.policyServer` are automatically assigned to the default policy server.
     - **Default Policy Mode**: `protect` (enforcing mode) is the default policy mode for all policies.
     - **Default Failure Policy**: `Fail` by default (admission failures cause the API request to be rejected).
-    - **Background Audit**: `enabled` by default (policies are audited in the background to ensure compliance of existing resources).
+    - **Background Audit**: `enabled` by default (policies are audited in the background to check compliance of existing resources).
     - **Default Policy Server Timeout**: 10 seconds is the default timeout for policy server requests.
 
   - Outline any additional configurations from default to make reasonable use of the project
 
     Guidance for configuring Kubewarden for production use is available in the [Production deployments](https://docs.kubewarden.io/howtos/production-deployments) and [Configuring Policy Server for production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments) documentation.
-    Recommendations for enhancing security are provided in the [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) documentation.
+    Recommendations for enhancing security are in the [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) documentation.
 
   - Describe any new or changed API types and calls \- including to cloud providers \- that will result from this project being enabled and used
 
@@ -283,28 +283,29 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     The Kubewarden API server has no specific compatibility requirements.
     Features that depend on a particular Kubernetes version are automatically disabled at runtime if the cluster does not meet the required version.
+    Policies that depend on a specific Kubernetes API version (e.g: [deprecated-api-versions-policy](https://github.com/kubewarden/deprecated-api-versions-policy)) declare it as such.
 
   - Describe versioning of any new or changed APIs, including how breaking changes are handled
 
     The project follows [semantic versioning](https://semver.org/) for its releases; additional details are provided in the following question.
     For CRDs, the stable version in use is `v1`. In line with Kubernetes conventions, breaking changes to the API trigger a new version, whereas non-breaking enhancements are introduced within the existing version.
     CRDs may also be released as alpha or beta versions before reaching stability.
-    Alpha versions (`v1alphaX`) are considered experimental and may undergo significant changes or be removed entirely.
+    Alpha versions (`v1alphaX`) are experimental and may undergo significant changes or be removed entirely.
     Beta versions (`v1betaX`) are more stable, with fewer breaking changes expected, but are still subject to refinement before becoming stable.
 
   - Describe the project’s release processes, including major, minor and patch releases.
 
     The main components of the Kubewarden project—`kubewarden-controller`, `policy-server`, `kwctl`, and `audit-scanner`—are always released together, ensuring their major and minor versions remain synchronized.
-    However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is considered the Kubewarden "stack" version and is used for the `appVersion` field in the released Helm chart.
-    For each release, the team determines whether the included features and changes necessitate a major or minor version bump and tags the components accordingly.
-    The Helm chart's `version` field does not follow the same numbering as the `appVersion`.
+    However, the patch version for each component can be incremented independently as needed. The combination of the major and minor version is the Kubewarden "stack" version and used for the `appVersion` field in the released Helm chart.
+    For each release, the team determines whether the included features and changes are a major or minor version bump and tag the components accordingly.
+    The Helm chart's `version` field doesn't follow the same numbering as the `appVersion`.
     These are independent because the Helm chart version can change due to modifications in the chart itself, without corresponding changes in the Kubewarden components.
     Whenever a major or minor version bump occurs in the `appVersion`, an equivalent version bump is also performed in the Helm chart's `version` field.
     This is documented in our docs in the [upgrade path documentation](https://docs.kubewarden.io/reference/upgrade-path).
-    The release process documentation can be found at [this location](https://github.com/kubewarden/helm-charts/blob/main/CONTRIBUTING.md).
+    The release process documentation is at [this location](https://github.com/kubewarden/helm-charts/blob/main/CONTRIBUTING.md).
 
     Kubewarden policies follow their own independent lifecycle.
-    Their versioning progresses at a pace specific to each policy and is determined on a per-policy basis depending on the changes introduced in each release.
+    Their versioning progresses at a pace specific to each policy and determined on a per-policy basis depending on changes introduced in each release.
 
 ### Installation
 
@@ -328,20 +329,20 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     1. **Make security a design requirement**
 
-       - **Threat-model integration**: The Kubewarden team continuously evaluates the controller and policy server against the Kubernetes SIG Security Admission Control Threat Model to bake security into every release.
+       - **Threat-model integration**: The Kubewarden team continuously evaluates the controller and policy server against the Kubernetes SIG Security Admission Control Threat Model to make security considerations a part of every release.
 
          See the ([Threat Model reference documentation](https://docs.kubewarden.io/reference/threat-model)) reference documentation.
 
        - **WebAsembly Sandboxing**: Kubewarden executes policies inside isolated WebAssembly sandboxes.
-         This architecture ensures that policies are confined and cannot interfere with each other or the host system, significantly reducing the attack surface.
-       - **Context-aware policies**: Policies can be designed to only access the resources they need, and they are limited to the permissions granted to the policy server.
+         This architecture means that policies are confined and can't interfere with each other, or the host system, so reducing the attack surface.
+       - **Context-aware policies**: Policies can be designed to only access the resources they need, and are limited to the permissions granted to the policy server.
          This ensures that even if a policy is compromised, it cannot access resources outside its intended scope.
 
     2. **Applying secure configuration has the best user experience**
 
-       - **Helm Charts with Secure Defaults**: The Kubewarden Helm charts come with secure defaults out-of-the-box, including the `kubewarden-defaults` chart that automatically creates a default poliyserver and installs recommended security policies.
+       - **Helm Charts with Secure Defaults**: Kubewarden Helm charts come with secure defaults out-of-the-box, including the `kubewarden-defaults` chart. That chart automatically creates a default policyserver and installs recommended security policies.
          TLS is enabled by default for all components, and the `kubewarden-controller` is configured to use a secure service account with limited permissions.
-       - **Clear docs and guides**: Step-by-step Quick Start and "Security hardening" pages ensure that following secure defaults takes no more time than a typical Helm install or kubectl apply.
+       - **Clear docs and guides**: Step-by-step Quick Start and "Security hardening" pages mean that following secure defaults takes no more time than a typical Helm install or kubectl apply.
          This includes mTLS with the Kubernetes API server, RBAC, and Security Contexts.
 
        See the [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) and the [Webhooks hardening](https://docs.kubewarden.io/reference/security-hardening/webhooks-hardening) documentation for more details.
@@ -353,7 +354,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
        For policies the user can:
 
        - **Allow insecure sources**: Kubewarden enforces secure connections (HTTPS with trusted certificates) when pulling policy artifacts from registries.
-         However, the user can choose to allow connosections to registries using untrusted certficates or even without TLS by [explicitly configuring the policy server to do so](https://docs.kubewarden.io/howtos/policy-servers/custom-cas#insecure-sources).
+         However, the user can choose to allow connections to registries using untrusted certificates or even without TLS by [explicitly configuring the policy server to do so](https://docs.kubewarden.io/howtos/policy-servers/custom-cas#insecure-sources).
        - **Use the monitor mode**:
          Kubewarden policies operate in two modes: `protect` and `monitor`. By default, policies are deployed in `protect` mode, where they actively enforce rules by accepting, rejecting, or mutating requests.
          The user can choose to deploy policies in `monitor` mode, where they only log the actions they would have taken without enforcing them.
@@ -361,7 +362,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
     4. **Transition from insecure to secure state is possible**
 
        - **Hardening**: The Kubewarden project provides a [Security Hardening](https://docs.kubewarden.io/howtos/security-hardening) guide that helps users transition from a default secure state to a more secure state.
-       - **Protect mode**: Policies in `monitor` mode can be transitioned to `protect` mode at any time. However, the opposite is not possible.
+       - **Protect mode**: Policies in `monitor` mode can change to `protect` mode at any time. However, the opposite isn't possible.
          This is a deliberate design choice to prevent users from unintentionally downgrading the security posture of their policies.
        - **Controlled policy adoption**: As custom resources, policies can be applied gradually; starting with specific namespaces via `namespaceSelector`, `matchConditions`, and `rules`, then expanding to broader scopes when ready.
 
@@ -382,7 +383,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     8. **Security limitations of a system are explainable**
 
-       - **Transparent Architecture**: [The Kubewarden architecture is clearly documented](https://docs.kubewarden.io/explanations/architecture), making security boundaries and assumptions explicit.
+       - **Transparent Architecture**: [The Kubewarden architecture is documented](https://docs.kubewarden.io/explanations/architecture) here, making security boundaries and assumptions explicit.
        - **Threat Model Assessment**: The project maintains a public threat model assessment, increasing transparency about security considerations.
        - **Alternative Recommendations**: When certain security controls aren't possible, Kubewarden documentation provides alternative approaches and recommendations.
 
@@ -393,11 +394,11 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Security Hygiene
 
-  - Please describe the frameworks, practices and procedures the project uses to maintain the basic health and security of the project.
+  - Please describe the frameworks, practices, and procedures the project uses to maintain the basic health and security of the project.
 
     **Dependency management**
 
-    Kubewarden uses Renovatebot to keep dependencies up to date in all the repositories.
+    Kubewarden has a [Security and dependency policy](https://github.com/kubewarden/community/blob/main/SECURITY.md#supported-versions). We use automation tools such as Renovatebot and Updatecli to keep dependencies up to date in all the repositories.
 
     **Vulnerability scanning**
 
@@ -409,21 +410,21 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - Describe how the project has evaluated which features will be a security risk to users if they are not maintained by the project?
 
-    N/A
+    By its architectural design, Kubewarden policies being Wasm modules run in a Wasm host. This ensures policies can be used more safely even in different levels of maintenance.
 
 - Cloud Native Threat Modeling
 
   - Explain the least minimal privileges required by the project and reasons for additional privileges.
 
-  RBAC roles needed by Kubewarden components are documneted at [Security Hardening - RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac).
+  RBAC roles needed by Kubewarden components are documented at [Security Hardening - RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac).
 
-  Kubewarden is also able to run in a Namspace where the restricted Pod Security Standards are enforced.
-  Please refer to the [Security Hardening - Securityy Contexts](https://docs.kubewarden.io/howtos/security-hardening#pod-security-standards) for more information.
+  Kubewarden is also able to run in a Namespace where the restricted Pod Security Standards are enforced.
+  Please refer to the [Security Hardening - Security Contexts](https://docs.kubewarden.io/howtos/security-hardening#pod-security-standards) for more information.
 
 - Describe how the project is handling certificate rotation and mitigates any issues with certificates.
 
   Kubewarden has its own certificate rotation mechanism. The CA root and the leaf certificates are both rotated automatically.
-  This is managed by the `kubewarden-controller` component, and it is documented at [Certificate Rotation](https://docs.kubewarden.io/howtos/security-hardening#certificate-rotation).
+  This is managed by the `kubewarden-controller` component, and is documented at [Certificate Rotation](https://docs.kubewarden.io/howtos/security-hardening#certificate-rotation).
 
 - Describe how the project is following and implementing [secure software supply chain best practices](https://project.linuxfoundation.org/hubfs/CNCF_SSCP_v1.pdf)
 
@@ -456,7 +457,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - How can this project be enabled or disabled in a live cluster? Please describe any downtime required of the control plane or nodes.
 
   The project can be enabled or disabled by following the [Uninstall process documentation](https://docs.kubewarden.io/howtos/uninstall) instructions.
-  The project can be uninstalled without downtime, as it does not require any changes to the control plane or nodes.
+  The project can be uninstalled without downtime, as it doesn't require any changes to the control plane or nodes.
 
   In critical situations, operations teams may need to carry out actions that Kubewarden would normally block.
   To support this, Kubewarden offers an [emergency disable procedure](https://docs.kubewarden.io/howtos/emergency-disable) that allows the policy engine to be temporarily turned off.
@@ -468,7 +469,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe how the project tests enablement and disablement.
 
-  Installating and uninstalling Kubewarden is part of the [Kubewarden end-to-end testing suite](https://github.com/kubewarden/kubewarden-end-to-end-tests/).
+  Installing and uninstalling Kubewarden is part of the [Kubewarden end-to-end testing suite](https://github.com/kubewarden/kubewarden-end-to-end-tests/).
 
 - How does the project clean up any resources created, including CRDs?
 
@@ -483,30 +484,30 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe how the project handles rollback procedures.
 
-  Kubewarden does not include a dedicated rollback procedure and is intended to support forward-only upgrades.
-  While technically possible, reverting to a previous version of the project is not recommended.
+  Kubewarden doesn't include a dedicated rollback procedure and is intended to support forward-only upgrades.
+  While technically possible, reverting to a previous version of the project isn't recommended.
 
 - How can a rollout or rollback fail? Describe any impact to already running workloads.
 
-  Kubewarden does not support rollback procedures.
+  Kubewarden doesn't support rollback procedures.
 
   During rollout, potential failure scenarios include infrastructure issues, misconfigurations in the PolicyServer, software bugs, and certificate-related problems.
-  The impact on running workloads is typically minimal: existing validations remain functional because Kubewarden relies on Kubernetes' built-in deployment rollout mechanism,
-  which ensures that the previous version of the application stays available until the new version is fully deployed and verified.
+  The impact on running workloads is typically minimal: existing validations remain functional because Kubewarden relies on Kubernetes' built-in deployment rollout mechanism. This means
+  the previous version of the application stays available until the new version is fully deployed and verified.
 
 - Describe any specific metrics that should inform a rollback.
 
-  The project does not have specific metrics to inform a rollback.
+  The project doesn't have specific metrics to inform a rollback.
   However, the project provides a set of [observability metrics](https://docs.kubewarden.io/howtos/telemetry/metrics-qs) that can be used to monitor the health of the system.
 
 - Explain how upgrades and rollbacks were tested and how the upgrade-\>downgrade-\>upgrade path was tested.
 
-  At the time of writing, the project has not been tested for downgrade scenarios.
+  At the time of writing, the project hasn't been tested for downgrade scenarios.
   Upgrade paths are tested with each release through our [end-to-end testing suite](https://github.com/kubewarden/kubewarden-end-to-end-tests/).
 
 - Explain how the project informs users of deprecations and removals of features and APIs.
 
-  Kubewarden communicates deprecations and removals through release notes, blog announcements, and documentation updates.
+  Kubewarden communicates deprecations and removals through our semantic versioning of specific components, release notes, blog announcements, and documentation updates.
   The project follows standard Kubernetes conventions for API lifecycle management.
   Additionally, Kubewarden provides a specialized policy that can detect usage of deprecated Kubernetes APIs, helping users identify potential compatibility issues in their configurations.
 
@@ -517,7 +518,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Explain how the project permits utilization of alpha and beta capabilities as part of a rollout.
 
-  Kubewarden clearly indicates API maturity through versioning (v1alpha, v1beta, v1).
+  Kubewarden indicates API maturity through versioning (v1alpha, v1beta, v1).
   Experimental features typically require explicit opt-in through configuration, allowing users to test new features while being aware of potential instability.
 
   Documentation for experimental features, including experimental policies, includes appropriate warnings and limitations, enabling users to make informed decisions based on their risk tolerance.
