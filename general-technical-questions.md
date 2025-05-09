@@ -142,7 +142,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   #### Design principles:
 
-  Kubewarden's design principles can be found at: https://docs.kubewarden.io/explanations/architecture#design-principles.
+  Kubewarden's design principles are at: https://docs.kubewarden.io/explanations/architecture#design-principles.
 
   #### Best practices
 
@@ -152,7 +152,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   2. **Automate CI/CD Pipelines**
 
-  All core repositories leverage a shared [kubewarden/github-actions](https://github.com/kubewarden/github-actions) toolkit in GitHub Actions to build Wasm modules,
+  All core repositories use a shared [kubewarden/github-actions](https://github.com/kubewarden/github-actions) toolkit in GitHub Actions to build Wasm modules,
   generate SBOMs, run unit/integration tests, and publish releases, ensuring consistent quality gates and reproducible artifacts across the project.
 
   3. **Test for Real-World Scenarios**
@@ -167,7 +167,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   5. **Comprehensive, Versioned Documentation**
 
-  Provide Quickstarts, Tutorials, Howtos, API references, and upgrade guides all pinned to specific releases so users always view docs matching their software version in [docs.kubewarden.io](https://docs.kubewarden.io).
+  Provide Quickstarts, Tutorials, Howtos, API references, and upgrade guides all pinned to specific releases so users always view documentation matching their software version in [docs.kubewarden.io](https://docs.kubewarden.io).
 
   6. **Secure Software Supply Chain (SLSA Compliance)**
 
@@ -183,13 +183,13 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   Also, multiple policy server instances can be deployed to handle different sets of policies, allowing for better resource allocation and isolation.
   See [Configuring Kubewarden stack for production](https://docs.kubewarden.io/howtos/production-deployments) and [Configuring Policy Server for production](https://docs.kubewarden.io/howtos/policy-servers/production-deployments) for more details.
 
-  End-to-end and load tests are run against a production-like environment.
+  End-to-end and load tests run against a production-like environment.
   Development and integration test environments are typically single-node clusters, where both the `kubewarden-controller` and `policy-server` components are deployed as single replicas.
 
 - Define any specific service dependencies the project relies on in the cluster.
 
-  The project does not have any specific service dependencies in the cluster.
-  Optionally, the project can be integrated with external services for observability, audit visualization, and policy management.
+  The project doesn't have any specific service dependencies in the cluster.
+  Optionally, the project can integrate with external services for observability, audit visualization, and policy management.
 
   See [Integrations](#integrations) for the list of supported integrations.
   See [Dependecy Matrix](https://docs.kubewarden.io/reference/dependency-matrix) for the list of dependencies.
@@ -197,8 +197,9 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Describe how the project implements Identity and Access Management.
 
   The project relies on the native Kubernetes [RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac) feature to control what each component can access.
-  Because Kubewarden policies can access resources within the [cluster](https://docs.kubewarden.io/explanations/context-aware-policies), access control is implemented individually for each policy server, which serves as the engine where the policies are executed.
+  Kubewarden policies can access resources within the [cluster](https://docs.kubewarden.io/explanations/context-aware-policies), so access control is implemented individually for each policy server. Policy servers are the engine where the policies are executed.
   Therefore, different policy servers running distinct sets of policies can have varying access permissions.
+
   Furthermore, policies must explicitly declare the resources they intend to access; all other resources are blocked by default. Additionally, policies have read-only access to these declared resources.
 
   The same principle applies to the [audit scanner](https://docs.kubewarden.io/explanations/audit-scanner), which audits the running resources in the cluster.
@@ -206,23 +207,23 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe how the project has addressed sovereignty.
 
-  The project does not have any specific requirements for data sovereignty.
-  However, the policies can be designed to ensure that sensitive data is not sent outside the cluster or to external services.
+  The project doesn't have any specific requirements for data sovereignty.
+  However, the policies can be designed to ensure that sensitive data isn't sent outside the cluster or to external services.
   The policies can also be configured to restrict access to specific namespaces or resources within the cluster.
 
 - Describe any compliance requirements addressed by the project.
 
   To date, we haven't formally certified Kubewarden to meet any security standards (such as PCI-DSS, COBIT, ISO, GDPR, etc.).
-  However, policies from our catalog can be used for providing certification of other workloads in Kubernetes clusters.
+  However, you can use policies from our catalog to provide certification of other workloads in Kubernetes clusters.
   See https://github.com/kubewarden/community/blob/main/security-self-assesment.md#project-compliance for more information.
 
 - Describe the project’s High Availability requirements.
 
   Kubewarden leverages the inherent High Availability (HA) capabilities of Kubernetes by deploying its core components as standard Kubernetes Deployments.
-  This design allows users to achieve HA through standard Kubernetes mechanisms.
+  This design provides HA through standard Kubernetes mechanisms.
 
   To ensure the availability of Kubewarden, users should configure the Kubewarden Deployments (for components like the controller and policy servers) with multiple replicas.
-  This ensures that even if one or more instances fail, a minimum number of replicas remain operational, preventing service disruption.
+  This means that even if one or more instances fail, a minimum number of replicas remain operational, preventing service disruption.
   Kubewarden also offers documentation to help users make their setup more reliable by using common Kubernetes features such as `PodDisruptionBudgets`, Affinity and Anti-Affinity rules, resource limits and requests, and more.
 
   See [Configuring Kubewarden stack for production](https://docs.kubewarden.io/howtos/production-deployments) and
@@ -231,17 +232,17 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Describe the project’s resource requirements, including CPU, Network and Memory.
 
   Resource requirements vary depending on the number and complexity of policies deployed.
-  `kubewarden-controller` and `audit-scanner`limits and requests are set using Helm chart values, default values can be found here: https://github.com/kubewarden/helm-charts/blob/b8d8f357d3ae0b677ff7c43582413f24777834e8/charts/kubewarden-controller/values.yaml#L225
-  The `policy-server` component's limits and requests can be set by following the documentation at [Production deployments](https://docs.kubewarden.io/howtos/policy-servers/production-deployments)
+  You set `kubewarden-controller` and `audit-scanner`limits and requests using Helm chart values. Default values can be found at [this link](https://github.com/kubewarden/helm-charts/blob/b8d8f357d3ae0b677ff7c43582413f24777834e8/charts/kubewarden-controller/values.yaml#L225).
+  You can set the `policy-server` component's limits and requests by following the documentation at [Production deployments](https://docs.kubewarden.io/howtos/policy-servers/production-deployments)
 
 - Describe the project’s storage requirements, including its use of ephemeral and/or persistent storage.
 
-  The Kubewarden project's application components are stateless. Their storage requirements revolve around ephemeral storage for runtime data processing.
+  The Kubewarden project's application components are stateless. Their storage requirements are ephemeral for runtime data processing.
 
-  On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, which are mounted as files within the pod.
-  During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. These storage options are tied to the lifecycle of the pod and are discarded when the pod is terminated.
+  On startup, each component loads all necessary configuration and sensitive information from Kubernetes ConfigMaps and Secrets, mounted as files within the pod.
+  During runtime, any processed data is temporarily stored within ephemeral volumes, such as `emptyDir` volumes or directly in memory. This storage is discarded when the pod is terminated.
 
-  The project does not have any requirements for persistent storage for its core application components.
+  The project doesn't have requirements for persistent storage for its core application components.
   All data needed for operation is either provided through configuration or is transient and managed within the pod's ephemeral storage.
 
   The Kubewarden policies are stored in [OCI registries as OCI artifacts](https://docs.kubewarden.io/reference/oci-registries-support).
@@ -250,10 +251,10 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - Describe the project’s API topology and conventions
 
-    Kubwarden integrates with Kubernetes by providing a set of CRDs.
-    The CRDs are documented at https://docs.kubewarden.io/reference/CRDs.
+    Kubewarden integrates with Kubernetes by providing a set of CRDs.
+    CRDs documentation is at https://docs.kubewarden.io/reference/CRDs.
 
-    The API follows standard Kubernetes extension patterns and it is organzizd in groups and versions.
+    The API follows standard Kubernetes extension patterns and it is organized in groups and versions.
 
   - Describe the project defaults
 
