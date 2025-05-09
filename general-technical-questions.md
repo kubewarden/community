@@ -113,8 +113,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Describe the user experience (UX) and user interface (UI) of the project.
 
-  Kubewarden's user experience is centered around the `kwctl` CLI and a collection of Kubernetes CRDs.
-  While the project does not include a web UI, it can be integrated with external tools that offer graphical interfaces for policy management, reporting and observability.
+  Kubewarden's user experience centers around the `kwctl` CLI and a collection of Kubernetes CRDs.
+  While the project doesn't include a web UI, it can be integrated with external tools offering graphical interfaces for policy management, reporting and observability.
   See the following question for more details.
 
 - Describe how this project integrates with other projects in a production environment.
