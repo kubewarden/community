@@ -254,7 +254,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
     Kubewarden integrates with Kubernetes by providing a set of CRDs.
     CRDs documentation is at https://docs.kubewarden.io/reference/CRDs.
 
-    The API follows standard Kubernetes extension patterns and it is organized in groups and versions.
+    The API follows standard Kubernetes extension patterns and it's organized in groups and versions.
 
   - Describe the project defaults
 
