@@ -101,7 +101,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
 - Please describe any completed end user research and link to any reports.
 
-  N/A
+  We are working on a report to be published in the future.
 
 ### Usability
 
@@ -178,6 +178,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Outline or link to the project’s architecture requirements? Describe how they differ for Proof of Concept, Development, Test and Production environments, as applicable.
 
   The project architecture documentation is available at: https://docs.kubewarden.io/explanations/architecture
+  Additionally, refer to the [actors](https://github.com/kubewarden/community/blob/main/security-self-assesment.md#actors) and [actions](https://github.com/kubewarden/community/blob/main/security-self-assesment.md#actions) sections of the [Security Self-Assessment](/security-self-assesment.md) document.
 
   For a production environment, multiple replicas of the `kubewarden-controller` and `policy-server` components should be deployed to ensure high availability and fault tolerance.
   Also, multiple policy server instances can be deployed to handle different sets of policies, allowing for better resource allocation and isolation.
@@ -388,6 +389,9 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
        - **Alternative Recommendations**: When certain security controls aren't possible, Kubewarden documentation provides alternative approaches and recommendations.
 
 - Describe how each of the cloud native principles apply to your project.
+
+  We are waiting for the CNCF TOC to provide guidance on this topic: https://github.com/cncf/toc/issues/1673
+
 - How do you recommend users alter security defaults in order to "loosen" the security of the project? Please link to any documentation the project has written concerning these use cases.
 
   Use case [Allow insecure sources](https://docs.kubewarden.io/howtos/policy-servers/custom-cas#insecure-sources)
