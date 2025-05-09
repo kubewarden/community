@@ -58,7 +58,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - **Website:** https://kubewarden.io
 - **Date Updated:** 2025-04-24
 - **Template Version:** v1.0
-- **Description:** Kubewarden is a universal policy engine for Kubernetes. Its mission is simplifying the adoption of policy-as-code and it aims to be the Universal Policy Engine for Kubernetes.
+- **Description:** Kubewarden is a Kubernetes Policy Engine. It aims to be the Universal Policy Engine for Kubernetes, simplifying the adoption of 'policy-as-code'.
 
 ## Day 0 - Planning Phase
 
