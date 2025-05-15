@@ -12,7 +12,11 @@ Kubewarden is being used which helps us to best influence its direction.
 
 Being a CNCF project, Kubewarden requires a list of independent adopters to
 grow into the next stage. Sharing that you are using Kubewarden in production
-is the most meaningful contribution you can make. A healthy adopter list aids in moving to the next CNCF stage.
+is the most meaningful contribution you can make. A healthy adopter list aids
+in moving to the next CNCF stage.
+
+Adopters can also be private, reach out to us at
+cncf-kubewarden-maintainers@lists.cncf.io to get involved. 
 
 # Organizations
 
