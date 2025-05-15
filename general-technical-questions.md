@@ -422,23 +422,23 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - Explain the least minimal privileges required by the project and reasons for additional privileges.
 
-  RBAC roles needed by Kubewarden components are documented at [Security Hardening - RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac).
+    RBAC roles needed by Kubewarden components are documented at [Security Hardening - RBAC](https://docs.kubewarden.io/howtos/security-hardening#rbac).
 
-  Kubewarden is also able to run in a Namespace where the restricted Pod Security Standards are enforced.
-  Please refer to the [Security Hardening - Security Contexts](https://docs.kubewarden.io/howtos/security-hardening#pod-security-standards) for more information.
+    Kubewarden is also able to run in a Namespace where the restricted Pod Security Standards are enforced.
+    Please refer to the [Security Hardening - Security Contexts](https://docs.kubewarden.io/howtos/security-hardening#pod-security-standards) for more information.
 
-- Describe how the project is handling certificate rotation and mitigates any issues with certificates.
+  - Describe how the project is handling certificate rotation and mitigates any issues with certificates.
 
-  Kubewarden has its own certificate rotation mechanism. The CA root and the leaf certificates are both rotated automatically.
-  Management is by the `kubewarden-controller` component, and documented at [Certificate Rotation](https://docs.kubewarden.io/howtos/security-hardening#certificate-rotation).
+    Kubewarden has its own certificate rotation mechanism. The CA root and the leaf certificates are both rotated automatically.
+    Management is by the `kubewarden-controller` component, and documented at [Certificate Rotation](https://docs.kubewarden.io/howtos/security-hardening#certificate-rotation).
 
-- Describe how the project is following and implementing [secure software supply chain best practices](https://project.linuxfoundation.org/hubfs/CNCF_SSCP_v1.pdf)
+  - Describe how the project is following and implementing [secure software supply chain best practices](https://project.linuxfoundation.org/hubfs/CNCF_SSCP_v1.pdf)
 
-  Kubewarden is SLSA Level 3 compliant. The project generates SBOMs and provenance attestations for every Wasm module, container image, and Helm chart.
-  All artifacts are signed with Sigstore’s Cosign and signatures are published alongside attestations. This enables fully automated, end-to-end verification of artifact integrity and origin.
-  See [Verifying Kubewarden](https://docs.kubewarden.io/tutorials/verifying-kubewarden) and [the SLSA level 3 blogpost](https://www.kubewarden.io/blog/2024/11/kubewarden-1-18-release-slsa-level-3/) for more details.
+    Kubewarden is SLSA Level 3 compliant. The project generates SBOMs and provenance attestations for every Wasm module, container image, and Helm chart.
+    All artifacts are signed with Sigstore’s Cosign and signatures are published alongside attestations. This enables fully automated, end-to-end verification of artifact integrity and origin.
+    See [Verifying Kubewarden](https://docs.kubewarden.io/tutorials/verifying-kubewarden) and [the SLSA level 3 blogpost](https://www.kubewarden.io/blog/2024/11/kubewarden-1-18-release-slsa-level-3/) for more details.
 
-  Also, Kubewarden policies can verify the signatures of OCI artifacts via the [Signature Verifier](https://docs.kubewarden.io/reference/spec/host-capabilities/signature-verifier-policies) capability.
+    Also, Kubewarden policies can verify the signatures of OCI artifacts via the [Signature Verifier](https://docs.kubewarden.io/reference/spec/host-capabilities/signature-verifier-policies) capability.
 
 ## Day 1 \- Installation and Deployment Phase
 
