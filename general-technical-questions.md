@@ -58,8 +58,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - **Website:** https://kubewarden.io
 - **Date Updated:** 2025-05-15
 - **Template Version:** v1.0
-- **Description:** Kubewarden is a Kubernetes Policy Engine. It aims to be the Universal Policy Engine for Kubernetes by:
-
+- **Description:**
+  Kubewarden is a Kubernetes Policy Engine. It aims to be the Universal Policy Engine for Kubernetes by:
   - simplifying the adoption of 'policy-as-code'
   - distributing policies as OCI images
   - using Wasm to be architecture independent
@@ -67,7 +67,13 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   - reusing policies from other policy engines without rewriting
   - verifying policies using SLSA tools and practices
   - providing a comprehensive approach to admission policy management.
-    Information about Kubewarden's roadmap process is available in the [ROADMAP.md](https://github.com/kubewarden/community/blob/main/ROADMAP.md) document in the community repository.
+
+## Day 0 - Planning Phase
+
+### Scope
+
+- Describe the roadmap process, how scope is determined for mid to long term features, as well as how the roadmap maps back to current contributions and maintainer ladder?
+  Information about Kubewarden's roadmap process is available in the [ROADMAP.md](https://github.com/kubewarden/community/blob/main/ROADMAP.md) document in the community repository.
 
   The maintainer ladder is at [MAINTAINERS.md](https://github.com/kubewarden/community/blob/main/MAINTAINERS.md).
 
