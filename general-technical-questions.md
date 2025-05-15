@@ -73,6 +73,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 ### Scope
 
 - Describe the roadmap process, how scope is determined for mid to long term features, as well as how the roadmap maps back to current contributions and maintainer ladder?
+
   Information about Kubewarden's roadmap process is available in the [ROADMAP.md](https://github.com/kubewarden/community/blob/main/ROADMAP.md) document in the community repository.
 
   The maintainer ladder is at [MAINTAINERS.md](https://github.com/kubewarden/community/blob/main/MAINTAINERS.md).
