@@ -11,6 +11,9 @@ regularly, driving its progress day by day. On the other hand, Maintainers are
 those who have previously served as Core Maintainers but are currently less
 active. Despite their reduced involvement, they remain valuable contributors.
 
+There are also the community managers, who are responsible for helping to drive
+the Kuberwarden community and promote the project
+
 ## Core Maintainers
 
 - [Flavio Castelli](https://github.com/flavio), SUSE
@@ -25,4 +28,5 @@ active. Despite their reduced involvement, they remain valuable contributors.
 - [Olivier Vernin](https://github.com/olblak), SUSE
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 
-
+# Community Management
+- [Robert Sirchia](https://github.com/robertsirc), SUSE
