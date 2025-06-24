@@ -5,56 +5,8 @@ This document defines the project governance for Kubewarden. Kubewarden is a
 
 # Roles
 
-## Contributors
-
-Community members who contribute in concrete ways to the project. Anyone can
-contribute to the project and become a contributor, regardless of their
-skillset. There is no expectation of commitment to the project, no specific
-skill requirements, and no selection process. There are many ways to contribute
-to the project, for example:
-- Reporting or fixing bugs.
-- Identifying requirements, strengths, and weaknesses.
-- Improving the Kubewarden website.
-- Improving the documentation.
-- Joining discussions on our Slack channels (#kubewarden), social networks (e.g:
-  Bluesky and Mastodon), or at community meetings.
-- Evangelizing about the project (e.g. a link on a website or word-of-mouth
-  awareness raising).
-
-As one continues to contribute to the project and engage with the community,
-they may at some point become eligible and desire to be a Maintainer.
-
-## Maintainers
-
-Maintainers are first and foremost, committers that have shown they are committed
-to the long term success of the project. They are the planners and designers of
-the Kubewarden project. Maintainership is about building trust with the current
-maintainers of the project and being a person that they can depend on to make
-decisions in the best interest of the project in a consistent manner.
-
-A list of active maintainers can be seen at [MAINTAINERS.md](./MAINTAINERS.md)
-
-Committers wanting to become maintainers are expected to:
-- Collaborate well.
-- Demonstrate a deep and comprehensive understanding of Kubewarden's
-  architecture, technical goals, and directions.
-- Actively engage with major Kubewarden feature proposals and implementations.
-- Enable adoptions or ecosystems.
-- Perform day-to-day work: review PRs, triage issues, create releases, own
-  project infrastructure, represent Kubewarden, and involve themselves in
-  CNCF-related activities.
-
-A new Maintainer must be publicly nominated by an existing maintainer (by
-opening a PR to update the maintainers list). Upon a supermajority (2/3) of
-votes from active maintainers, it is approved and becomes active.
-
-If a Maintainer is no longer able to perform the maintainer duties listed above,
-they should volunteer to be moved to emeritus status. In extreme cases,
-maintainers can also be removed from the active maintainers list by a
-supermajority (2/3) of votes of existing maintainers.
-
-Maintainers are defined in the CODEOWNERS file of the specific repositories by
-their GitHub user handles.
+The Roles in the Kubewarden project can be found in the
+[CONTRIBUTOR_LADDER](./CONTRIBUTOR_LADDER.md) file.
 
 # Governance
 
