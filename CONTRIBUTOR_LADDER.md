@@ -9,8 +9,7 @@
 - [Stepping Down/Emeritus Process](#stepping-downemeritus-process)
 - [Contact](#contact)
 
-Hello! We are excited that you want to learn more about our project contributor
-ladder! This contributor ladder outlines the different contributor roles within
+Hello! We are excited that you want to learn more about contributing to the project! This contributor ladder outlines the different contributor roles within
 the project, along with the responsibilities and privileges that come with
 them. Community members generally start at the first levels of the "ladder" and
 advance up it as their involvement in the project grows. Our project members
@@ -53,7 +52,7 @@ specific skill requirements, and no selection process.
 Description: A mentee can be seen as a contributor with some additional
 privileges to specific components or repositores inside the organization. The
 goal of this role is to allow mentees from some mentorship programs to have
-permissions to create issues and assign work to themselves while the program
+permissions to create issues and assign work to themselves for the program
 duration.
 
 - Responsibilities include:
@@ -61,7 +60,7 @@ duration.
     CoC](https://github.com/kubewarden/community/blob/main/CODE_OF_CONDUCT.md)
   - Follow the project contributing guide
   - Follow the roadmap set to the applied mentorship program
-  - Report regularly the work in progress to mentor from the maintainers team
+  - Report regularly the work in progress to their mentor from the maintainers team
 - Requirements (one or several of the below):
   - Show up at meetings, takes notes
   - Submit feedback on issues and PRs
@@ -142,7 +141,7 @@ Process of becoming a maintainer:
 
 ## Inactivity
 
-It is important for contributors to be and stay active to set an example and
+It is important for contributors to be, and remain, active to set an example and
 show commitment to the project. Inactivity is harmful to the project as it may
 lead to unexpected delays, contributor attrition, and a lost of trust in the
 project.
