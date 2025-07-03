@@ -28,5 +28,11 @@ the Kuberwarden community and promote the project
 - [Olivier Vernin](https://github.com/olblak), SUSE
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 
+# Mentees
+
+- [Esosa Ohangbon](https://github.com/esosaoh) Google Summer of Code 2025
+- [Khaled Emara](https://github.com/KhaledEmaraDev) Linux Foundation Mentorship 2023
+- [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023      
+
 # Community Management
 - [Robert Sirchia](https://github.com/robertsirc), SUSE
