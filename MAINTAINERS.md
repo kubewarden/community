@@ -20,6 +20,7 @@ the Kuberwarden community and promote the project
 - [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
 - [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
 - [José Guilherme Vanz](https://github.com/jvanz), SUSE
+- [Alessio Greggi](https://github.com/alegrey91), SUSE
 
 
 ## Maintainers
