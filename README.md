@@ -139,7 +139,7 @@ installing, running and using Kubewarden.
 [![Kubewarden Policy Repository](./badges/kubewarden-policies.svg)](./REPOSITORIES.md#policy-scope)
 
 All the policies maintained by the Kubewarden team are stored in the
-[policies](https://github.com/kubewarden/policies) repository.
+[kubewarden/policies](https://github.com/kubewarden/policies) and [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) repositories.
 
 For policies across **all** of GitHub, see the
 [`kubewarden-policy`](https://github.com/topics/kubewarden-policy) topic tag.
