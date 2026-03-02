@@ -6,21 +6,21 @@ There are different ways you could help us simplify the adoption of policy as co
 
 ## Feedback
 
-* Starring our main repository [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller). GitHub stars do matter !
-* Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
-* Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
+- Starring our main repository [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller). GitHub stars do matter !
+- Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
+- Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
 
-## Code 
+## Code
 
 Contributing to our [policy templates](https://github.com/topics/kubewarden-policy-template), [policy SDKs](https://github.com/topics/kubewarden-policy-sdk) and [policies](https://github.com/topics/kubewarden-policy).
 You could also look into the following "core" projects:
 
-| Project | Scope | Language |
-|---------|---------|--------|
-| [`kubewarden-controller`](https://github.com/kubewarden/kubewarden-controller) | Kubernetes integration point| Go |
-| [`policy-server`](https://github.com/kubewarden/policy-server) | Run Kubewarden policies | Rust |
-| [`kwctl`](https://github.com/kubewarden/kwctl) | Kubewarden policy multi-purpose cli tool | Rust |
-| [`audit-scanner`](https://github.com/kubewarden/audit-scanner) | continously report policy results | Go |
+| Project                                                                        | Scope                                    | Language |
+| ------------------------------------------------------------------------------ | ---------------------------------------- | -------- |
+| [`kubewarden-controller`](https://github.com/kubewarden/kubewarden-controller) | Kubernetes integration point             | Go       |
+| [`policy-server`](https://github.com/kubewarden/policy-server)                 | Run Kubewarden policies                  | Rust     |
+| [`kwctl`](https://github.com/kubewarden/kwctl)                                 | Kubewarden policy multi-purpose cli tool | Rust     |
+| [`audit-scanner`](https://github.com/kubewarden/audit-scanner)                 | continously report policy results        | Go       |
 
 ### Specific CONTRIBUTING.md guides
 
@@ -57,7 +57,7 @@ On testing code:
 - Prefer the usage of `assert_eq!` macro over `assert!(a == b)` or
   `assert!(a.eq(&b))`.
 - Prefer to use tests without return values over tests that return `Result<(),
-  Error>`. This to avoid the boilerplate of writing `Ok(())` in the test body
+Error>`. This to avoid the boilerplate of writing `Ok(())` in the test body
   and to avoid to import `anyhow::Result` in the test module.
 - Use table testing with [rstest](https://docs.rs/rstest/latest/rstest/) for
   tests with similar cases but different inputs.
@@ -69,6 +69,12 @@ On testing code:
 
 See more Some additional guidelines on [how to test
 code](https://matklad.github.io/2021/05/31/how-to-test.html)
+
+### AI Usage Policy
+
+Kubewarden project is not against the usage of AI tool in the development
+process. But contributors should follow some guide lines described in the
+[AI_POLICY.md](./AI_POLICY.md)
 
 ## Mission
 
