@@ -29,7 +29,7 @@ The following rules apply to every contribution, regardless of how it was produc
 
 ## Disclosure
 
-If AI was used to generate a significant portion of your contribution, disclose
+If AI was used to generate any part of your contribution, disclose
 it in the PR description and add an `Assisted-by:` trailer to the relevant
 commits:
 
@@ -50,7 +50,7 @@ Contributing is a collaborative process. When maintainers leave feedback, follow
 - Maintainers reserve the right to close any low-effort AI contribution without
   a detailed technical critique.
 
-This is not an anti-AI stance. It is a quality and sustainability stance.
+This is not an anti-AI stance. It is a stance for quality, openness, traceability, and sustainability.
 
 ## Acknowledgement
 

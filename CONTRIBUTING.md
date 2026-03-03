@@ -20,7 +20,7 @@ You could also look into the following "core" projects:
 | [`kubewarden-controller`](https://github.com/kubewarden/kubewarden-controller) | Kubernetes integration point             | Go       |
 | [`policy-server`](https://github.com/kubewarden/policy-server)                 | Run Kubewarden policies                  | Rust     |
 | [`kwctl`](https://github.com/kubewarden/kwctl)                                 | Kubewarden policy multi-purpose cli tool | Rust     |
-| [`audit-scanner`](https://github.com/kubewarden/audit-scanner)                 | continously report policy results        | Go       |
+| [`audit-scanner`](https://github.com/kubewarden/audit-scanner)                 | Continously report policy results        | Go       |
 
 ### Specific CONTRIBUTING.md guides
 
@@ -72,7 +72,7 @@ code](https://matklad.github.io/2021/05/31/how-to-test.html)
 
 ### AI Usage Policy
 
-Kubewarden project is not against the usage of AI tool in the development
+Kubewarden project is not against the usage of AI tools in the development
 process. But contributors should follow some guide lines described in the
 [AI_POLICY.md](./AI_POLICY.md)
 
