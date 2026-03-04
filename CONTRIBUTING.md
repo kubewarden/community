@@ -73,7 +73,7 @@ code](https://matklad.github.io/2021/05/31/how-to-test.html)
 ### AI Usage Policy
 
 Kubewarden project is not against the usage of AI tools in the development
-process. But contributors should follow some guide lines described in the
+process. But contributors should follow the guidelines described in the
 [AI_POLICY.md](./AI_POLICY.md)
 
 ## Mission
