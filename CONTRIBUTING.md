@@ -6,7 +6,7 @@ There are different ways you could help us simplify the adoption of policy as co
 
 ## Feedback
 
-- Starring our main repository [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller). GitHub stars do matter !
+- Starring our Admission Controller repository [kubewarden/adm-controller](https://github.com/adm/kubewarden-controller). GitHub stars do matter !
 - Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
 - Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
 
@@ -15,9 +15,9 @@ There are different ways you could help us simplify the adoption of policy as co
 Contributing to our [policy templates](https://github.com/topics/kubewarden-policy-template), [policy SDKs](https://github.com/topics/kubewarden-policy-sdk) and [policies](https://github.com/topics/kubewarden-policy).
 You could also look into the following "core" projects:
 
-| Project                                                                        | Scope                                    | Language |
-| ------------------------------------------------------------------------------ | ---------------------------------------- | -------- |
-| [`kubewarden-controller`](https://github.com/kubewarden/kubewarden-controller) | Kubernetes integration point             | Go       |
+| Project                                                          | Scope                                    | Language |
+| -----------------------------------------------------------------| ---------------------------------------- | -------- |
+| [`adm-controller`](https://github.com/kubewarden/adm-controller) | Kubernetes integration point             | Go, Rust |
 
 ### Specific CONTRIBUTING.md guides
 

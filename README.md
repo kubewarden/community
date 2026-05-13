@@ -112,10 +112,10 @@ Repository](./badges/kubewarden-core.svg)](./REPOSITORIES.md#core-scope)
 Core repositories, are critically important as they are essential for building,
 installing, running and using Kubewarden.
 
-| NAME                                                                                    | STATUS                                                                                                                                                            | DESCRIPTION                                                                                                |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Manage admission policies in your Kubernetes cluster with ease                                             |
-| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)                     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Helm charts for the Kubewarden project                                                                     |
+| NAME                                                                      | STATUS                                                                                                                                                                   | DESCRIPTION                                                     |
+| --------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------|
+| [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Manage admission policies in your Kubernetes cluster with ease  |
+| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)       | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Helm charts for the Kubewarden project                          |
 
 ### Infra
 

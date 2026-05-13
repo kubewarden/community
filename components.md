@@ -13,17 +13,17 @@ requests, but also for the `PolicyServer` resource. CRDs define the setup for
 PolicyServers, with deployment specific details and parameters.
 
 The Kubewarden CRDs are defined in the
-[kubewarden-controller](https://github.com/kubewarden/kubewarden-controller)
+[adm-controller](https://github.com/kubewarden/adm-controller)
 repository.
 
-#### Kubewarden Controller
+#### Admission Controller
 
-The Kubewarden Controller is the conductor. It monitors Kubewarden CRDs and
-Kubernetes resources, ensuring the all resources necessary for running 
+The Kubewarden Admission Controller is the conductor. It monitors Kubewarden
+CRDs and Kubernetes resources, ensuring the all resources necessary for running
 PolicyServers and policies are correctly configured. 
 
 The code of the Kubewarden controller can be found in the
-[kubewarden-controller](https://github.com/kubewarden/kubewarden-controller)
+[adm-controller](https://github.com/kubewarden/adm-controller)
 repository.
 
 #### Policy Server
@@ -33,7 +33,7 @@ within each policy to validate, mutate, or reject requests. Deployed within
 Kubernetes, these servers are capable of hosting multiple policies
 in parallel.
 
-See the Policy Server code [here](https://github.com/kubewarden/policy-server)
+See the Policy Server code [here](https://github.com/kubewarden/adm-controller/tree/main/crates/policy-server)
 
 #### Policies
 
@@ -55,9 +55,9 @@ webhooks are critical for directing traffic, ensuring that each admission
 request is evaluated against the relevant policy, facilitating a dynamic and
 automated policy enforcement process.
 
-#### AuditScanner
+#### Audit Scanner
 
-The AuditScanner introduces a proactive layer to Kubewarden’s security
+The Audit Scanner introduces a proactive layer to Kubewarden’s security
 framework, periodically scanning the cluster to identify and report
 non-compliant resources. This component enhances cluster security by evaluating
 the cluster state against enforced policies, identifying discrepancies and
@@ -65,5 +65,13 @@ facilitating timely remediation. It integrates with Policy Servers,
 using existing policy definitions to ensure consistent enforcement and
 evaluation.
 
-The AuditScanner code can be found
-[here](https://github.com/kubewarden/audit-scanner)
+The Audit Scanner code can be found
+[here](https://github.com/kubewarden/adm-controller/tree/main/crates/audit-scanner)
+
+#### Kwctl
+
+The Kwctl CLI utility aids in dealing with Kubewarden policies out of cluster.
+evaluation.
+
+The kwctl code can be found
+[here](https://github.com/kubewarden/adm-controller/tree/main/crates/kwctl)
