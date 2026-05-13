@@ -7,6 +7,7 @@ There are different ways you could help us simplify the adoption of policy as co
 ## Feedback
 
 - Starring our Admission Controller repository [kubewarden/adm-controller](https://github.com/adm/kubewarden-controller). GitHub stars do matter !
+- Starring our SBOM Scanner repository [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscammer). GitHub stars do matter !
 - Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
 - Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
 
@@ -18,6 +19,7 @@ You could also look into the following "core" projects:
 | Project                                                          | Scope                                    | Language |
 | -----------------------------------------------------------------| ---------------------------------------- | -------- |
 | [`adm-controller`](https://github.com/kubewarden/adm-controller) | Kubernetes integration point             | Go, Rust |
+| [`sbomscanner`](https://github.com/kubewarden/sbomscanner)       | Kubernetes SBOM-centric security scanner | Go       |
 
 ### Specific CONTRIBUTING.md guides
 

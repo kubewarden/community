@@ -75,3 +75,14 @@ evaluation.
 
 The kwctl code can be found
 [here](https://github.com/kubewarden/adm-controller/tree/main/crates/kwctl)
+
+#### SBOM Scanner
+
+The SBOM Scanner is a SBOM-centric registry vulnerability scanner that
+integrates well with Kubernetes. It scans container images and artifacts in an
+OCI registry, generates a Software Bill of Materials (SBOM) and provides
+vulnerability reports that inclyde discovered CVEs and other security issues.
+It interfaces with the Adm Controller and Audit Scanner.
+
+The code of the SBOM Scanner can be found in the
+[sbomscanner](https://github.com/kubewarden/sbomscanner) repository.
