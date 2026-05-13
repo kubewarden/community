@@ -18,9 +18,6 @@ You could also look into the following "core" projects:
 | Project                                                                        | Scope                                    | Language |
 | ------------------------------------------------------------------------------ | ---------------------------------------- | -------- |
 | [`kubewarden-controller`](https://github.com/kubewarden/kubewarden-controller) | Kubernetes integration point             | Go       |
-| [`policy-server`](https://github.com/kubewarden/policy-server)                 | Run Kubewarden policies                  | Rust     |
-| [`kwctl`](https://github.com/kubewarden/kwctl)                                 | Kubewarden policy multi-purpose cli tool | Rust     |
-| [`audit-scanner`](https://github.com/kubewarden/audit-scanner)                 | Continously report policy results        | Go       |
 
 ### Specific CONTRIBUTING.md guides
 
