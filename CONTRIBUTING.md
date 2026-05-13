@@ -23,8 +23,9 @@ You could also look into the following "core" projects:
 
 ### Specific CONTRIBUTING.md guides
 
-Once you have selected a project repository to contribute, please read the CONTRIBUTING.md on that repository for specific
-directions on setting a development environment, testing, or development tools needed.
+Once you have selected a project repository to contribute, please read the
+CONTRIBUTING.md on that repository for specific directions on setting a
+development environment, testing, or development tools needed.
 
 ### Rust code conventions
 
