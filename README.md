@@ -112,15 +112,11 @@ Repository](./badges/kubewarden-core.svg)](./REPOSITORIES.md#core-scope)
 Core repositories, are critically important as they are essential for building,
 installing, running and using Kubewarden.
 
-| NAME                                                                                    | STATUS                                                                                                                                                            | DESCRIPTION                                                                                                |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [kubewarden/kubewarden-controller](https://github.com/kubewarden/kubewarden-controller) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Manage admission policies in your Kubernetes cluster with ease                                             |
-| [kubewarden/policy-server](https://github.com/kubewarden/policy-server)                 | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Webhook server that evaluates WebAssembly policies to validate Kubernetes requests                         |
-| [kubewarden/audit-scanner](https://github.com/kubewarden/audit-scanner)                 | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Reports evaluation of existing Kubernetes resources with your already deployed Kubewarden policies         |
-| [kubewarden/kwctl](https://github.com/kubewarden/kwctl/)                                | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Go-to CLI tool for Kubewarden users                                                                        |
-| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)                     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Helm charts for the Kubewarden project                                                                     |
-| [kubewarden/policy-evaluator](https://github.com/kubewarden/policy-evaluator)           | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Rust library used by Kubewarden to evaluate policies with a given input, request to evaluate and settings. |
-| [kubewarden/policy-fetcher](https://github.com/kubewarden/policy-fetcher/)              | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Rust library used by Kubewarden to pull policies from OCI registries and HTTP servers.                     |
+| NAME                                                                      | STATUS                                                                                                                                                                   | DESCRIPTION                                                     |
+| --------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------|
+| [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Manage admission policies in your Kubernetes cluster with ease  |
+| [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner)       | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A SBOM-centric security scanner for Kubernetes                  |
+| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)       | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Helm charts for the Kubewarden project                          |
 
 ### Infra
 
@@ -211,5 +207,13 @@ under the [Kubewarden](https://github.com/kubewarden) GitHub's
 organization anymore. In other cases, a repository is archived to reserve its
 name for future use.
 
-The list of archived repositories can be found
+The following repositories where merged into the [kubewarden/adm-controller] repository:
+- [kubewarden/policy-server](https://github.com/kubewarden/policy-server)
+- [kubewarden/audit-scanner](https://github.com/kubewarden/audit-scanner)
+- [kubewarden/kwctl](https://github.com/kubewarden/kwctl/)
+- [kubewarden/policy-evaluator](https://github.com/kubewarden/policy-evaluator)
+- [kubewarden/policy-fetcher](https://github.com/kubewarden/policy-fetcher/)
+
+The full list of archived repositories can be found
 [here](https://github.com/kubewarden?q=&type=archived&language=&sort=name).
+

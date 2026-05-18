@@ -1,6 +1,6 @@
 # AI Contribution Policy
 
-Kubewarden is a Kubernetes policy engine where correctness directly affects
+Kubewarden is a Kubernetes security suite where correctness directly affects
 cluster security. This policy sets expectations for AI-assisted contributions
 so contributors and maintainers can collaborate effectively.
 

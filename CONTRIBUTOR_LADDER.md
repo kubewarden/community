@@ -9,11 +9,12 @@
 - [Stepping Down/Emeritus Process](#stepping-downemeritus-process)
 - [Contact](#contact)
 
-Hello! We are excited that you want to learn more about contributing to the project! This contributor ladder outlines the different contributor roles within
-the project, along with the responsibilities and privileges that come with
-them. Community members generally start at the first levels of the "ladder" and
-advance up it as their involvement in the project grows. Our project members
-are happy to help you advance along the contributor ladder.
+Hello! We are excited that you want to learn more about contributing to the
+project! This contributor ladder outlines the different contributor roles
+within the project, along with the responsibilities and privileges that come
+with them. Community members generally start at the first levels of the
+"ladder" and advance up it as their involvement in the project grows. Our
+project members are happy to help you advance along the contributor ladder.
 
 Each of the contributor roles below is organized into lists of three types of
 things. "Responsibilities" are things that a contributor is expected to do.
