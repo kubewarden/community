@@ -50,10 +50,9 @@ side, this means:
   affects them.
 
 If you have found a security vulnerability in Kubewarden, the easiest way to
-report a vulnerability is through the [Security tab on
-GitHub](https://github.com/kubewarden/community/security/advisories). This
-mechanism allows maintainers to communicate privately with you, and you do not
-need to encrypt your messages.
+report a vulnerability is through the Security tab on GitHub for the specific
+repo. This mechanism allows maintainers to communicate privately with you,
+and you don't need to encrypt your messages.
 
 Alternatively, you can can disclose it responsibly by emailing
 [cncf-kubewarden-maintainers@lists.cncf.io](mailto:cncf-kubewarden-maintainers@lists.cncf.io)
