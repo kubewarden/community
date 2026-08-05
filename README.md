@@ -85,7 +85,7 @@ the [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## Security policy
 
-See the [security policy](./SECURITY.md) for more information about how to report
+See the [security policy](./https://github.com/kubewarden/.github/blob/main/SECURITY.md) for more information about how to report
 any security issues.
 
 ## Repositories

@@ -404,7 +404,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     **Dependency management**
 
-    Kubewarden has a [Security and dependency policy](https://github.com/kubewarden/community/blob/main/SECURITY.md#supported-versions). We use automation tools such as Renovatebot and Updatecli to keep dependencies up to date in all the repositories.
+    Kubewarden has a [Security and dependency policy](https://github.com/kubewarden/.github/blob/main/SECURITY.md#supported-versions). We use automation tools such as Renovatebot and Updatecli to keep dependencies up to date in all the repositories.
 
     **Vulnerability scanning**
 
