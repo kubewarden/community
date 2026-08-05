@@ -33,10 +33,10 @@
 
 | Doc                          | URL                                                                                                                                           |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Security overview            | [SECURITY.md](./SECURITY.md)                                                                                                                  |
+| Security overview            | [SECURITY.md](https://github.com/kubewarden/.github/blob/main/SECURITY.md)                                                                    |
 | Security disclosure          | [SECURITY.md](https://github.com/kubewarden/community/blob/main/SECURITY.md#reporting-a-vulnerability), https://docs.kubewarden.io/disclosure |
 | Threat model                 | https://docs.kubewarden.io/reference/threat-model                                                                                             |
-| Security file                | [SECURITY.md](./SECURITY.md)                                                                                                                  |
+| Security file                | [SECURITY.md](https://github.com/kubewarden/.github/blob/main/SECURITY.md)                                                                    |
 | Default and optional configs | https://docs.kubewarden.io/howtos/security-hardening                                                                                          |
 
 ### Overview
@@ -423,14 +423,14 @@ Kubewarden documentation lists ArgoCD and Fleet how-tos.
 ### Security issue resolution
 
 - Responsible Disclosures Process. This is specified both in the
-  [SECURITY.md](./SECURITY.md) file in this repository and in
+  [SECURITY.md](https://github.com/kubewarden/.github/blob/main/SECURITY.md) file in this repository and in
   https://docs.kubewarden.io/disclosure.
 
 - Vulnerability Response Process. Specified in the
-  [SECURITY.md](./SECURITY.md) file in this repository under "Reporting a vulnerability".
+  [SECURITY.md](https://github.com/kubewarden/.github/blob/main/SECURITY.md) file in this repository under "Reporting a vulnerability".
 
 - Incident Response. Specified in the
-  [SECURITY.md](./SECURITY.md) file in this repository under "Security Patch
+  [SECURITY.md](https://github.com/kubewarden/.github/blob/main/SECURITY.md) file in this repository under "Security Patch
   Policy, Dependency Policy".
 
 ### Appendix
