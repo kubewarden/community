@@ -2,7 +2,7 @@ name: Community Meeting Recording
 title: "Publish meeting recording for <MONTH>"
 description: Upload the community meeting recording to the Kubewarden YouTube channel.
 projects: ["kubewarden/6"]
-assignees: ["robertsirc"]
+assignees: ["dcermak"]
 
 body:
   - type: markdown

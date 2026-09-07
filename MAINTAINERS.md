@@ -36,4 +36,5 @@ the Kuberwarden community and promote the project
 - [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023      
 
 # Community Management
+- [Dan Čermák](https://github.com/dcermak), SUSE
 - [Robert Sirchia](https://github.com/robertsirc), SUSE
