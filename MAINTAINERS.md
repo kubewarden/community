@@ -21,6 +21,9 @@ the Kuberwarden community and promote the project
 - [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
 - [José Guilherme Vanz](https://github.com/jvanz), SUSE
 - [Alessio Greggi](https://github.com/alegrey91), SUSE
+- [Shang-Wen Wang](https://github.com/holyspectral), SUSE
+- [Kyle Dong](https://github.com/kyledong-suse), SUSE
+- [Alessio Biancalana](https://github.com/dottorblaster), SUSE
 
 
 ## Maintainers
