@@ -24,3 +24,4 @@ cncf-kubewarden-maintainers@lists.cncf.io to get involved.
 - [Foresight Mining software Corporation](https://www.foresightmining.com/)
 - [CLAAS](https://www.claas.com/)
 - [CANCOM](https://www.cancom.de/)
+- [OpenChoreo](https://openchoreo.dev/)
