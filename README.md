@@ -112,11 +112,13 @@ Repository](./badges/kubewarden-core.svg)](./REPOSITORIES.md#core-scope)
 Core repositories, are critically important as they are essential for building,
 installing, running and using Kubewarden.
 
-| NAME                                                                      | STATUS                                                                                                                                                                   | DESCRIPTION                                                     |
-| --------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------|
-| [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Manage admission policies in your Kubernetes cluster with ease  |
-| [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner)       | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A SBOM-centric security scanner for Kubernetes                  |
-| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)       | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Helm charts for the Kubewarden project                          |
+| NAME                                                                          | STATUS                                                                                                                                                                   | DESCRIPTION                                                          |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller)     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Manage admission policies in your Kubernetes cluster with ease       |
+| [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner)           | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A SBOM-centric security scanner for Kubernetes                       |
+| [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)           | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Helm charts for the Kubewarden project                               |
+| [kubewarden/runtime-enforcer](https://github.com/kubewarden/runtime-enforcer) | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A runtime enforcement solution for your Kubernetes cluster           |
+| [kubewarden/network-enforcer](https://github.com/kubewarden/network-enforcer) | [![Sandbox](https://img.shields.io/badge/status-sandbox-red?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#sandbox)             | Generate and enforce network policies from observed workload traffic |
 
 ### Infra
 
@@ -208,6 +210,7 @@ organization anymore. In other cases, a repository is archived to reserve its
 name for future use.
 
 The following repositories where merged into the [kubewarden/adm-controller] repository:
+
 - [kubewarden/policy-server](https://github.com/kubewarden/policy-server)
 - [kubewarden/audit-scanner](https://github.com/kubewarden/audit-scanner)
 - [kubewarden/kwctl](https://github.com/kubewarden/kwctl/)
@@ -216,4 +219,3 @@ The following repositories where merged into the [kubewarden/adm-controller] rep
 
 The full list of archived repositories can be found
 [here](https://github.com/kubewarden?q=&type=archived&language=&sort=name).
-
