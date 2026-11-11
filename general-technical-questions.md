@@ -279,8 +279,9 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - cert-manager and cert-manager-csi-driver: required for the default chart install.
   - One network provider: Istio ambient mode (1.30.3 or later), Calico (v3.32.1 or later) or Cilium (1.20.0 or later).
-    The provider enforces the generated policies and supplies the network flows.
-  - The flow source of the provider: ztunnel access logs (Istio), Goldmane (Calico) or Hubble Relay (Cilium).
+    The provider enforces the generated policies and reports the network flows.
+    A [flow](https://docs.kubewarden.io/network-enforcer/latest/en/glossary.html#_flow) is one observed connection between two workloads: source, destination, protocol and port.
+  - The service of the provider that reports the flows: ztunnel access logs (Istio), Goldmane (Calico) or Hubble Relay (Cilium).
 
   See [Compatibility](https://docs.kubewarden.io/network-enforcer/latest/en/reference/compatibility.html).
 
@@ -417,7 +418,7 @@ See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/l
   The Learn and Monitor phases stop until the controller is back. The controller does not learn network flows that occur during the outage.
   The controller does not use admission webhooks. It uses `ValidatingAdmissionPolicy` objects, which the API server evaluates on its own.
 
-  The Learn and Monitor phases depend on the flow source: Hubble Relay (Cilium), Goldmane (Calico) or ztunnel logs through a fluent-bit DaemonSet (Istio).
+  The Learn and Monitor phases depend on the service that reports the flows: Hubble Relay (Cilium), Goldmane (Calico) or ztunnel logs through a fluent-bit DaemonSet (Istio).
   The optional OpenTelemetry collector is a stateless pass-through, fronted by a Kubernetes Service, so you can scale it the same way. It is not on the enforcement path.
 
   **Runtime Enforcer**
