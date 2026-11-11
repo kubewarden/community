@@ -179,7 +179,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   graphical interfaces for policy management, reporting and observability.
   See the following question for more details.
 
-  Some components offer also CLI (dedicated ones, kubectl plugins) to simplify
+  Some components also offer a CLI (dedicated ones or `kubectl` plugins) to simplify
   certain operations.
 
 - Describe how this project integrates with other projects in a production environment.
@@ -215,7 +215,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   #### Best practices
   1. **Stay Aligned with Upstream Kubernetes**
 
-  Kubewarden’s CRDs live under `<component>.kubewarden.io/v1` and adhere to Kubernetes API conventions.
+  Kubewarden’s CRDs live under `<component>.kubewarden.io/v1` and adhere to the Kubernetes API conventions.
   Policy semantics mirror official Kubernetes policies to avoid surprises when
   upgrading or integrating with native tooling.
 
@@ -247,8 +247,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   5. **Versioned Documentation**
 
-  Provide quick starts, tutorials, howtos, API references and upgrade guides all pinned to specific releases
-  so users always view documentation matching their software version in [docs.kubewarden.io](https://docs.kubewarden.io).
+  Provide quick starts, tutorials, how-tos, API references and upgrade guides pinned to specific releases
+  so users can always view documentation matching their software version in [docs.kubewarden.io](https://docs.kubewarden.io).
 
   6. **Secure Software Supply Chain (SLSA Compliance)**
 
@@ -296,8 +296,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   - cert-manager.
   - A PostgreSQL database. By default, the chart creates it with the CloudNativePG operator, which you must install first.
-    You can use an external PostgreSQL instance instead.
-  - A default Storage Class.
+    Alternatively, you can use an external PostgreSQL database instead.
+  - A default StorageClass.
 
   The chart deploys NATS as a subchart, so NATS is not an external dependency.
 
@@ -307,7 +307,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   **Optional integrations**
 
   All components can integrate with external services for observability, audit visualization and policy management.
-  See [Integrations](#integrations) for the list.
+  See [Integrations](#integrations) for the full list.
 
 - Describe how the project implements Identity and Access Management.
 
@@ -320,49 +320,57 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   **Admission Controller**
 
-  - Namespaced `AdmissionPolicy` and `AdmisisonPolicyGroup` resources can be delegated to namespace owners. Cluster-wide `ClusterAdmissionPolicy`
-    and `ClusterAdmissionPolicyGroup` resources stay with cluster administrators.
-  - Each Policy Server runs with its own Service Account. [Context-aware policies](https://docs.kubewarden.io/admission-controller/latest/en/explanations/context-aware-policies.html)
-    must declare the resources they read. All other resources are blocked.
-  - Each Policy Server can also define the host capabilities that are exposed to namespaced policies.
-    See [this section](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_namespaced_policy_host_capabilities)
-    of the hardening guide for more details.
-  - Access to OCI registries uses Kubernetes Secrets scoped to the Policy Server that needs them.
+- Management of namespaced `AdmissionPolicy` and `AdmissionPolicyGroup` resources can be delegated to
+  namespace owners. Cluster administrators manage the cluster-wide `ClusterAdmissionPolicy` and
+  `ClusterAdmissionPolicyGroup` resources.
+- Each Policy Server uses its own `ServiceAccount`.
+  [Context-aware policies](https://docs.kubewarden.io/admission-controller/latest/en/explanations/context-aware-policies.html)
+  must declare which resources they read. Access to undeclared resources is blocked.
+- Each Policy Server can define which host capabilities are available to namespaced policies. See
+  [Namespaced policy host capabilities](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_namespaced_policy_host_capabilities)
+  in the hardening guide.
+- Access to OCI registries uses Kubernetes Secrets scoped to the Policy Server that needs them.
 
-  See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_rbac).
+See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_rbac).
 
   **Network Enforcer**
 
-  - `WorkloadNetworkPolicy` and `WorkloadNetworkPolicyProposal` are namespaced. A namespace owner reviews a proposal and promotes it with a label.
-    The namespace owner does not need cluster-wide permissions.
-  - Two `ValidatingAdmissionPolicy` objects guard the proposals. One accepts only the values `monitor` and `protect` for the promote label.
-    The other blocks changes to the owner reference of a proposal.
-  - The controller holds cluster-wide write permissions on `NetworkPolicy` and Istio `AuthorizationPolicy` objects,
-    because it creates them in every namespace.
-  - The controller reads the TLS credentials of the network provider (Hubble Relay or Goldmane) from a Secret.
-    The chart grants read access to that one Secret only.
+  - `WorkloadNetworkPolicy` and `WorkloadNetworkPolicyProposal` resources are namespaced. Namespace owners
+    can review proposals and promote them by setting a label, without cluster-wide permissions.
+  - Two `ValidatingAdmissionPolicy` objects enforce rules for proposals. One restricts the promote label
+    to `monitor` or `protect`; the other blocks changes to a proposal's owner reference.
+  - The controller has cluster-wide write permissions on `NetworkPolicy` and Istio's `AuthorizationPolicy`
+    objects as it creates them in every namespace.
+  - The controller reads the network provider's Transport Layer Security (TLS) credentials from a Secret.
+    The provider can be Hubble Relay or Goldmane. The chart grants read access to that specific Secret.
 
   **Runtime Enforcer**
 
-  - `WorkloadPolicy` and `WorkloadPolicyProposal` are namespaced. A platform engineer selects the namespaces where learning runs.
-    An application team reviews a proposal and promotes it with a label.
-  - A `ValidatingAdmissionPolicy` makes the `runtimeenforcer.kubewarden.io/policy` label of a Pod immutable.
-    A user with Pod update rights cannot point a running Pod at a different policy.
-  - The agent and the controller communicate over gRPC with mutual TLS. The certificates come from cert-manager.
-  - The agent needs node-level privileges to load eBPF programs: the `BPF`, `PERFMON`, `SYS_RESOURCE` and `SYS_PTRACE`capabilities
-    and `hostPID`. It does not run as a privileged container.
+  - `WorkloadPolicy` and `WorkloadPolicyProposal` resources are namespaced. A platform engineer selects
+    the namespaces where learning runs. Application teams review proposals and promote them by setting a label.
+  - A `ValidatingAdmissionPolicy` makes the `runtimeenforcer.kubewarden.io/policy` label on a Pod immutable.
+    Users with Pod update permissions cannot change which policy a running Pod references.
+  - The agent and controller communicate over gRPC with mutual TLS, using certificates from cert-manager.
+  - To load extended Berkeley Packet Filter (eBPF) programs, the agent needs node-level privileges:
+     the `BPF`, `PERFMON`, `SYS_RESOURCE`, and `SYS_PTRACE` capabilities, plus `hostPID`. 
+    It does not run as a privileged container.
 
   **SBOM Scanner**
 
-  - `Registry` and `ScanJob` are namespaced. The configuration resources (`WorkloadScanConfiguration`, `NodeScanConfiguration`, `VEXHub`, `NodeScanJob`)
-    are cluster-scoped and belong to the platform engineer.
-  - A `Registry` reads its credentials from a Secret in its own namespace. Cross-namespace Secret references are not permitted.
-  - The worker is the only Service Account that can read Secrets. It holds `get` on Secrets cluster-wide, so it can read a `Registry`'s credentials wherever that `Registry` lives. The controller cannot read Secrets.
-  - Only the controller Service Account can change the managed `Registry` and `WorkloadScanReport` resources.
-  - The storage component is an aggregated API server. It delegates authentication and authorization of its requests to the Kubernetes API server.
-  - All components authenticate to NATS with mutual TLS. The MCP server uses Basic Auth and TLS.
-  - The node scanner runs as root with the `DAC_READ_SEARCH` capability and a read-only mount of the host root.
-    It is not compatible with the `restricted` [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/).
+  - `Registry` and `ScanJob` resources are namespaced. A platform engineer manages the cluster-scoped
+    configuration resources: `WorkloadScanConfiguration`, `NodeScanConfiguration`, `VEXHub`, and `NodeScanJob`.
+  - A `Registry` reads its credentials from a Secret in the same namespace. Cross-namespace Secret
+    references are not permitted.
+  - Secret read access is restricted to the worker's `ServiceAccount`. It has cluster-wide `get`
+    permission on Secrets to retrieve `Registry` credentials in any namespace. The controller cannot read Secrets.
+  - Permission to change managed `Registry` and `WorkloadScanReport` resources is restricted to the
+    controller's `ServiceAccount`.
+  - The storage component is an aggregated application programming interface (API) server. It delegates
+    request authentication and authorization to the Kubernetes API server.
+  - All components authenticate to NATS with mutual TLS. The Model Context Protocol (MCP) server uses
+    Basic Auth and TLS.
+  - The node scanner runs as root with the `DAC_READ_SEARCH` capability and a read-only mount of the
+    host root. It is not compatible with the `restricted` [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/).
 
   See [Multi-tenancy setup](https://docs.kubewarden.io/sbom-scanner/latest/en/tutorials/scanning-workloads.html) and
   [Private registries](https://docs.kubewarden.io/sbom-scanner/latest/en/howtos/private-registries.html).
@@ -388,7 +396,6 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   The controller and the Policy Servers run as Deployments.
   To keep the admission webhooks available, run these Deployments with more than one replica.
-  Then, if one instance fails, the other replicas continue to serve requests.
   The documentation explains how to use `PodDisruptionBudgets`, Affinity and Anti-Affinity rules, resource requests and limits, and Priority Classes.
 
   See [Configuring Kubewarden stack for production](https://docs.kubewarden.io/admission-controller/latest/en/howtos/production-deployments.html) and
@@ -402,11 +409,11 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   The controller is stateless. All durable state lives in the Kubernetes API server:
   observed flows become `WorkloadNetworkPolicyProposal` resources, and violations are written to the `WorkloadNetworkPolicy` status.
   The controller holds only short-lived queues in memory. It drains violation observations into the status every 30 seconds (`controller.wnpStatusUpdateInterval`).
-  A restart loses the queued observations that are not yet written. A controller crash is the same as a clean restart.
+  A restart or a crash results in the loss of the queued observations that have not been yet written.
 
   Enforcement does not depend on the controller.
   The controller writes native `NetworkPolicy` or Istio `AuthorizationPolicy` objects. Cilium, Calico or Istio enforce them.
-  If the controller is down, the existing policies stay in effect.
+  Existing policies stay in effect if the controller is down.
   The Learn and Monitor phases stop until the controller is back. The controller does not learn network flows that occur during the outage.
   The controller does not use admission webhooks. It uses `ValidatingAdmissionPolicy` objects, which the API server evaluates on its own.
 
@@ -419,9 +426,9 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   Only the leader reconciles and writes resources. The other replicas stand by and take over if the leader fails.
 
   The agent runs as a DaemonSet, one pod per node. The agent loads the eBPF programs and enforces policies on that node.
-  The OpenTelemetry collector is a stateless pass-through, fronted by a Kubernetes Service, so you can scale it the same way.
+  The OpenTelemetry collector is a stateless pass-through, run as a Kubernetes Service. You can scale it directly via Kubernetes.
 
-  If the controller is down, the webhooks reject new policy proposals, promotions and policy deletions (`failurePolicy: Fail`). Learning stops.
+  The webhooks reject new policy proposals promotions and policy deletions (`failurePolicy: Fail`), if the controller is down. No learning can occur at that time.
 
   The default values of the Helm chart protects the agent during upgrades.
   The DaemonSet uses `maxSurge: 100%` and `maxUnavailable: 0`.
@@ -445,11 +452,10 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   - NATS: StatefulSet with 3 pods in cluster mode, with JetStream.
   - Node worker: DaemonSet, deployed when node scanning is on.
 
-  SBOM Scanner is the only Kubewarden component with persistent storage. PostgreSQL and NATS use PersistentVolumeClaims.
-  CloudNativePG handles PostgreSQL failover.
+  SBOM Scanner is the only Kubewarden component which requires persistent storage. NATS uses a  PersistentVolumeClaim (PVC). If PostresSQL is deployed via CloudNativePG then the operator handles failover and requests a PVC too.
   The webhooks (`failurePolicy: Fail`) only cover the SBOM Scanner resources. A controller outage does not block ordinary workloads.
-  If the storage or PostgreSQL is down, you cannot read scan results until they recover. The data stays in PostgreSQL.
-  If the workers or NATS are down, scanning pauses. Existing reports stay readable.
+  You cannot read scan results as long as storage or PostgreSQL are down.
+  If the workers or NATS are down, scanning pauses but existing reports stay readable.
 
   For development, you can set each replica count to 1.
   See [Quickstart](https://docs.kubewarden.io/sbom-scanner/latest/en/quickstart.html) and
@@ -458,35 +464,35 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 - Describe the project’s resource requirements, including CPU, Network and Memory.
 
   Each Helm chart sets default CPU and memory requests and limits for its workloads.
-  The defaults fit a small cluster. You adjust them through the Helm values.
+  The defaults fit a small cluster. Adjust them via Helm values for your cluster.
   No component needs persistent network bandwidth. The components talk to the Kubernetes API server, and SBOM Scanner pulls images from OCI registries.
 
   **Admission Controller** ([defaults](https://github.com/kubewarden/helm-charts/blob/main/charts/admission-controller/values.yaml))
 
   - The chart sets requests and limits for the controller and the audit scanner.
-  - The Policy Server has no default. Usage depends on the number and complexity of the policies. You set `spec.limits` and `spec.requests` on the `PolicyServer` resource.
+  - The Policy Server has no default. Usage depends on the number and complexity of the policies. Set `spec.limits` and `spec.requests` on the `PolicyServer` resource accordingly.
 
   See [Limits and requests](https://docs.kubewarden.io/admission-controller/latest/en/howtos/production-deployments.html#_limits_and_requests).
 
   **Network Enforcer** ([defaults](https://github.com/kubewarden/helm-charts/blob/main/charts/network-enforcer/values.yaml))
 
-  - The controller runs with requests equal to limits, so the Pod has the `Guaranteed` QoS class. Kubernetes evicts it last under node pressure.
-  - The chart also sets requests and limits for the OpenTelemetry collector and, with Istio, for the fluent-bit DaemonSet.
+  - The controller runs with requests equal to limits, so the Pod has the `Guaranteed` QoS class and therefore Kubernetes evicts it last under node pressure.
+  - The chart also sets requests and limits for the OpenTelemetry collector and with Istio for the fluent-bit DaemonSet.
   - The controller receives a stream of network flows from the provider. The volume depends on the traffic in the cluster.
 
   **Runtime Enforcer** ([defaults](https://github.com/kubewarden/helm-charts/blob/main/charts/runtime-enforcer/values.yaml))
 
   - The controller and the agent run with requests equal to limits, so the Pods have the `Guaranteed` QoS class.
   - The agent runs on every node.
-  - The documentation gives sizing recommendations by cluster size, based on benchmarks. The factors are the maximum Pods per node, the number of workloads, the number of policies and the number of rules per policy.
+  - The documentation gives sizing recommendations by cluster size, based on benchmarks.
 
   See [Resource consumption](https://docs.kubewarden.io/runtime-enforcer/latest/en/reference/resource-consumption.html).
 
   **SBOM Scanner** ([defaults](https://github.com/kubewarden/helm-charts/blob/main/charts/sbomscanner/values.yaml))
 
   - The chart sets requests and limits for the controller, the storage and the workers. The storage component needs more memory because it processes SBOMs.
-  - Each component runs with three replicas by default. PostgreSQL and NATS add their own usage.
-  - The workers pull container images and the vulnerability databases from registries. This is the main network cost of the project.
+  - Each component runs with three replicas by default. PostgreSQL and NATS are handled separately.
+  - The main network cost of the project are the workers pulling container images and the vulnerability databases from registries.
 
   See [Resource limits and requests](https://docs.kubewarden.io/sbom-scanner/latest/en/howtos/helm-values.html#_resource_limits_and_requests).
 
@@ -500,12 +506,12 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
   On startup, each component loads its configuration and secrets from Kubernetes ConfigMaps and Secrets, mounted as files in the pod.
   During runtime, the component keeps processed data in memory or in `emptyDir` volumes. Pod termination discards this data.
 
-  The Admission Controller policies are distributed [OCI artifacts using container registries](https://docs.kubewarden.io/admission-controller/latest/en/reference/oci-registries-support.html).
+  The Admission Controller policies are distributed as [OCI artifacts via container registries](https://docs.kubewarden.io/admission-controller/latest/en/reference/oci-registries-support.html).
   The Network Enforcer and the Runtime Enforcer store all policy state in the Kubernetes API server, as custom resources.
 
   **SBOM Scanner**
 
-  SBOM Scanner stores SBOMs and vulnerability reports in a PostgreSQL database. The quickstart lists a default Storage Class as a prerequisite.
+  SBOM Scanner stores SBOMs and vulnerability reports in a PostgreSQL database.
 
   - PostgreSQL: by default, the Helm chart deploys a PostgreSQL cluster with CloudNativePG. Each instance uses a PersistentVolumeClaim of 1Gi.
     You can increase the size later, but you cannot decrease it. You can also connect SBOM Scanner to an external PostgreSQL instance.
@@ -553,17 +559,15 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
     **Network Enforcer** ([values.yaml](https://github.com/kubewarden/helm-charts/blob/main/charts/network-enforcer/values.yaml))
 
-    - Network provider: Istio ambient mode. Cilium and Calico are the alternatives.
-    - A new workload starts in the Learn phase. The controller writes a proposal and enforces nothing.
+    - Network provider: Istio ambient mode.
+    - A new workload starts in the Learn phase.
     - A promoted `WorkloadNetworkPolicy` starts in `monitor` mode.
-    - Telemetry: the chart deploys an OpenTelemetry collector in the cluster.
 
     **Runtime Enforcer** ([values.yaml](https://github.com/kubewarden/helm-charts/blob/main/charts/runtime-enforcer/values.yaml))
 
     - Learning: on in all namespaces.
     - A promoted `WorkloadPolicy` starts in `monitor` mode.
     - Fail closed: a Pod that references a missing policy does not start. Set `agent.nriFailopen=true` to change this.
-    - Telemetry: the chart deploys an OpenTelemetry collector in the cluster.
 
     **SBOM Scanner** ([values.yaml](https://github.com/kubewarden/helm-charts/blob/main/charts/sbomscanner/values.yaml))
 
@@ -571,7 +575,8 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
     - Workload scanning and node scanning: on.
     - The chart does not create `Registry` or scan configuration resources. You create them, and you set the scan interval on each one.
     - The chart seeds two `VEXHub` resources, for the Rancher and Aqua Security VEX repositories.
-    - MCP server: off. Telemetry export: off.
+    - MCP server: off. 
+    - Telemetry export: off.
 
   - Outline any additional configurations from default to make reasonable use of the project
 
@@ -582,8 +587,7 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
     - [Runtime Enforcer](https://docs.kubewarden.io/runtime-enforcer/latest/en/howtos/production-deployments.html)
     - [SBOM Scanner](https://docs.kubewarden.io/sbom-scanner/latest/en/howtos/production-deployments.html)
 
-    The Admission Controller also has a [Security Hardening](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html) guide.
-    It covers RBAC, Pod Security Admission, security contexts and the capabilities exposed to namespaced policies.
+    The Admission Controller also has a [Security Hardening](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html) guide, covering RBAC, Pod Security Admission, security contexts and the capabilities exposed to namespaced policies.
 
   - Describe any new or changed API types and calls \- including to cloud providers \- that will result from this project being enabled and used
 

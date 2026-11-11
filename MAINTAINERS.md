@@ -27,8 +27,8 @@ the Kuberwarden community and promote the project
 ## Maintainers
 
 - [Alessio Greggi](https://github.com/alegrey91), RedHat
-- [Andre Terzolo](https://github.com/andreaterzolo/), Isovalent
-- [Rafael Fernández López](https://github.com/ereslibre)
+- [Andrea Terzolo](https://github.com/andreaterzolo/), Isovalent
+- [Rafael Fernández López](https://github.com/ereslibre), Curried Software
 - [Olivier Vernin](https://github.com/olblak), SUSE
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 

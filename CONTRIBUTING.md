@@ -82,4 +82,4 @@ Contributors must follow the guidelines in [AI_POLICY.md](./AI_POLICY.md).
 
 ## Mission
 
-Help us make Kubernetes clusters a more secure place by adopting policy as code.
+Help us secure Kubernetes clusters by adopting policy as code!
