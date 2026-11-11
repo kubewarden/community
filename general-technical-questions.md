@@ -321,18 +321,18 @@ If this is the case for your project, please mark it as not-applicable (N/A) and
 
   **Admission Controller**
 
-- Management of namespaced `AdmissionPolicy` and `AdmissionPolicyGroup` resources can be delegated to
-  namespace owners. Cluster administrators manage the cluster-wide `ClusterAdmissionPolicy` and
-  `ClusterAdmissionPolicyGroup` resources.
-- Each Policy Server uses its own `ServiceAccount`.
-  [Context-aware policies](https://docs.kubewarden.io/admission-controller/latest/en/explanations/context-aware-policies.html)
-  must declare which resources they read. Access to undeclared resources is blocked.
-- Each Policy Server can define which host capabilities are available to namespaced policies. See
-  [Namespaced policy host capabilities](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_namespaced_policy_host_capabilities)
-  in the hardening guide.
-- Access to OCI registries uses Kubernetes Secrets scoped to the Policy Server that needs them.
+  - Management of namespaced `AdmissionPolicy` and `AdmissionPolicyGroup` resources can be delegated to
+    namespace owners. Cluster administrators manage the cluster-wide `ClusterAdmissionPolicy` and
+    `ClusterAdmissionPolicyGroup` resources.
+  - Each Policy Server uses its own `ServiceAccount`.
+    [Context-aware policies](https://docs.kubewarden.io/admission-controller/latest/en/explanations/context-aware-policies.html)
+    must declare which resources they read. Access to undeclared resources is blocked.
+  - Each Policy Server can define which host capabilities are available to namespaced policies. See
+    [Namespaced policy host capabilities](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_namespaced_policy_host_capabilities)
+    in the hardening guide.
+  - Access to OCI registries uses Kubernetes Secrets scoped to the Policy Server that needs them.
 
-See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_rbac).
+  See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/latest/en/howtos/security-hardening/security-hardening.html#_rbac).
 
   **Network Enforcer**
 
@@ -468,11 +468,12 @@ See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/l
 
   Each Helm chart sets default CPU and memory requests and limits for its workloads.
   The defaults fit a small cluster. Adjust them via Helm values for your cluster.
-  No component needs persistent network bandwidth. The components talk to the Kubernetes API server, and SBOM Scanner pulls images from OCI registries.
+  No component has a minimum bandwidth requirement. The network use of each component is listed below.
 
   **Admission Controller** ([defaults](https://github.com/kubewarden/helm-charts/blob/main/charts/admission-controller/values.yaml))
 
   - The chart sets requests and limits for the controller and the audit scanner.
+  - Network: the Policy Server downloads its policies from OCI registries when it starts. After that, its traffic is admission requests from the Kubernetes API server.
   - The Policy Server has no default. Usage depends on the number and complexity of the policies. Set `spec.limits` and `spec.requests` on the `PolicyServer` resource accordingly.
 
   See [Limits and requests](https://docs.kubewarden.io/admission-controller/latest/en/howtos/production-deployments.html#_limits_and_requests).
@@ -487,6 +488,7 @@ See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/l
 
   - The controller and the agent run with requests equal to limits, so the Pods have the `Guaranteed` QoS class.
   - The agent runs on every node.
+  - Network: each agent talks to the controller over gRPC, inside the cluster.
   - The documentation gives sizing recommendations by cluster size, based on benchmarks.
 
   See [Resource consumption](https://docs.kubewarden.io/runtime-enforcer/latest/en/reference/resource-consumption.html).
