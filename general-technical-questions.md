@@ -431,11 +431,13 @@ See [Security hardening: RBAC](https://docs.kubewarden.io/admission-controller/l
 
   The webhooks reject new policy proposals promotions and policy deletions (`failurePolicy: Fail`), if the controller is down. No learning can occur at that time.
 
-  The default values of the Helm chart protects the agent during upgrades.
-  The DaemonSet uses `maxSurge: 100%` and `maxUnavailable: 0`.
-  The new agent becomes ready before the old agent stops.
-  The controller and the agent use a Priority Class. Their resource requests equal their limits, so Kubernetes evicts them last.
-  The chart includes a `PodDisruptionBudget` for the controller. It is off by default.
+  The chart configures Kubernetes to keep an agent Pod available on every node:
+
+  - **During an upgrade.** The agent DaemonSet rolls with `maxSurge: 100%` and `maxUnavailable: 0`.
+    Kubernetes starts the new agent Pod on a node and waits until it is ready. Then it stops the old one.
+  - **Under node pressure.** The controller and the agent have a Priority Class, and their resource requests equal their limits.
+    As a result, Kubernetes evicts these Pods last.
+  - **During a node drain.** The chart includes a `PodDisruptionBudget` for the controller. It is off by default.
 
   By default, the agent blocks pods that reference a missing policy. You can set `agent.nriFailopen=true` to change this.
   To block container start when the agent is absent on a node, configure the "required plugins" feature of the container runtime.
