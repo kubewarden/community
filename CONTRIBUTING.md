@@ -6,20 +6,25 @@ There are different ways you could help us simplify the adoption of policy as co
 
 ## Feedback
 
-- Starring our Admission Controller repository [kubewarden/adm-controller](https://github.com/adm/kubewarden-controller). GitHub stars do matter !
-- Starring our SBOM Scanner repository [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscammer). GitHub stars do matter !
-- Joining us on our [`kubewarden` channel](https://kubernetes.slack.com/?redir=%2Fmessages%2Fkubewarden).
-- Following us on [Bluesky](https://bsky.app/profile/kubewarden.io) or [Mastodon](https://hachyderm.io/@kubewarden).
+- Starring our repositories. GitHub stars do matter!
+  [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller),
+  [kubewarden/network-enforcer](https://github.com/kubewarden/network-enforcer),
+  [kubewarden/runtime-enforcer](https://github.com/kubewarden/runtime-enforcer) and
+  [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner).
+- Joining the conversation. See the [Community](./README.md#community) section
+  of the README for Slack, social networks and the community meeting.
 
 ## Code
 
 Contributing to our [policy templates](https://github.com/topics/kubewarden-policy-template), [policy SDKs](https://github.com/topics/kubewarden-policy-sdk) and [policies](https://github.com/topics/kubewarden-policy).
 You could also look into the following "core" projects:
 
-| Project                                                          | Scope                                    | Language |
-| -----------------------------------------------------------------| ---------------------------------------- | -------- |
-| [`adm-controller`](https://github.com/kubewarden/adm-controller) | Kubernetes integration point             | Go, Rust |
-| [`sbomscanner`](https://github.com/kubewarden/sbomscanner)       | Kubernetes SBOM-centric security scanner | Go       |
+| Project                                                              | Scope                                          | Language |
+| -------------------------------------------------------------------- | ---------------------------------------------- | -------- |
+| [`adm-controller`](https://github.com/kubewarden/adm-controller)     | Admission control: policies as Wasm modules    | Rust, Go |
+| [`network-enforcer`](https://github.com/kubewarden/network-enforcer) | Network policies learned from observed traffic | Go       |
+| [`runtime-enforcer`](https://github.com/kubewarden/runtime-enforcer) | Runtime enforcement with eBPF                  | Go, C    |
+| [`sbomscanner`](https://github.com/kubewarden/sbomscanner)           | SBOM-centric vulnerability scanner             | Go       |
 
 ### Specific CONTRIBUTING.md guides
 
@@ -27,11 +32,11 @@ Once you have selected a project repository to contribute, please read the
 CONTRIBUTING.md on that repository for specific directions on setting a
 development environment, testing, or development tools needed.
 
-### Rust code conventions
+### Rust code conventions (Admission Controller)
 
-In the Kubewarden Rust code base everyone should follow some standards. This
-standards are inspired on
-[buck2](https://github.com/facebook/buck2/blob/main/HACKING.md#coding-conventions).
+The Admission Controller is the only component with Rust code. Its Rust code
+base follows these standards. They are inspired by
+[buck2](https://github.com/facebook/buck2/blob/a26199d9028d83ecf0c18ba612ce664d575400fc/HACKING.md#coding-conventions).
 All the code should be well-tested and easy to read. Furthermore, rustfmt,
 clippy and any other automatically enforced guidelines should be used as much
 as possible
@@ -67,15 +72,14 @@ Error>`. This to avoid the boilerplate of writing `Ok(())` in the test body
 - Use [mockall_double](https://docs.rs/mockall_double/latest/mockall_double/#)
 - Avoid writing traits only for testing purposes.
 
-See more Some additional guidelines on [how to test
-code](https://matklad.github.io/2021/05/31/how-to-test.html)
+See also these guidelines on [how to test
+code](https://matklad.github.io/2021/05/31/how-to-test.html).
 
 ### AI Usage Policy
 
-Kubewarden project is not against the usage of AI tools in the development
-process. But contributors should follow the guidelines described in the
-[AI_POLICY.md](./AI_POLICY.md)
+The Kubewarden project allows AI tools in the development process.
+Contributors must follow the guidelines in [AI_POLICY.md](./AI_POLICY.md).
 
 ## Mission
 
-Help us make Kubernetes cluster a more secure place by adopting policy as code.
+Help us make Kubernetes clusters a more secure place by adopting policy as code.

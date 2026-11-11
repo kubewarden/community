@@ -20,15 +20,15 @@ the Kuberwarden community and promote the project
 - [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
 - [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
 - [José Guilherme Vanz](https://github.com/jvanz), SUSE
-- [Alessio Greggi](https://github.com/alegrey91), SUSE
 - [Shang-Wen Wang](https://github.com/holyspectral), SUSE
 - [Kyle Dong](https://github.com/kyledong-suse), SUSE
 - [Alessio Biancalana](https://github.com/dottorblaster), SUSE
 
-
 ## Maintainers
 
-- [Rafael Fernández López](https://github.com/ereslibre), VMware
+- [Alessio Greggi](https://github.com/alegrey91), RedHat
+- [Andre Terzolo](https://github.com/andreaterzolo/), Isovalent
+- [Rafael Fernández López](https://github.com/ereslibre)
 - [Olivier Vernin](https://github.com/olblak), SUSE
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 
@@ -36,8 +36,9 @@ the Kuberwarden community and promote the project
 
 - [Esosa Ohangbon](https://github.com/esosaoh) Google Summer of Code 2025
 - [Khaled Emara](https://github.com/KhaledEmaraDev) Linux Foundation Mentorship 2023
-- [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023      
+- [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023
 
 # Community Management
+
 - [Dan Čermák](https://github.com/dcermak), SUSE
-- [Robert Sirchia](https://github.com/robertsirc), SUSE
+- [Robert Sirchia](https://github.com/robertsirc)
