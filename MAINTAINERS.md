@@ -16,20 +16,21 @@ the Kuberwarden community and promote the project
 
 ## Core Maintainers
 
-- [Flavio Castelli](https://github.com/flavio), SUSE
-- [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
-- [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
-- [José Guilherme Vanz](https://github.com/jvanz), SUSE
-- [Shang-Wen Wang](https://github.com/holyspectral), SUSE
-- [Kyle Dong](https://github.com/kyledong-suse), SUSE
 - [Alessio Biancalana](https://github.com/dottorblaster), SUSE
+- [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
+- [Flavio Castelli](https://github.com/flavio), SUSE
+- [José Guilherme Vanz](https://github.com/jvanz), SUSE
+- [Kyle Dong](https://github.com/kyledong-suse), SUSE
+- [Martin Kravec](https://github.com/kravciak), SUSE
+- [Shang-Wen Wang](https://github.com/holyspectral), SUSE
+- [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
 
 ## Maintainers
 
 - [Alessio Greggi](https://github.com/alegrey91), RedHat
 - [Andrea Terzolo](https://github.com/andreaterzolo/), Isovalent
-- [Rafael Fernández López](https://github.com/ereslibre), Curried Software
 - [Olivier Vernin](https://github.com/olblak), SUSE
+- [Rafael Fernández López](https://github.com/ereslibre), Curried Software
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 
 # Mentees
