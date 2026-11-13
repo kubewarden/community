@@ -16,28 +16,30 @@ the Kuberwarden community and promote the project
 
 ## Core Maintainers
 
-- [Flavio Castelli](https://github.com/flavio), SUSE
-- [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
-- [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
-- [José Guilherme Vanz](https://github.com/jvanz), SUSE
-- [Alessio Greggi](https://github.com/alegrey91), SUSE
-- [Shang-Wen Wang](https://github.com/holyspectral), SUSE
-- [Kyle Dong](https://github.com/kyledong-suse), SUSE
 - [Alessio Biancalana](https://github.com/dottorblaster), SUSE
-
+- [Fabrizio Sestito](https://github.com/fabriziosestito), SUSE
+- [Flavio Castelli](https://github.com/flavio), SUSE
+- [José Guilherme Vanz](https://github.com/jvanz), SUSE
+- [Kyle Dong](https://github.com/kyledong-suse), SUSE
+- [Martin Kravec](https://github.com/kravciak), SUSE
+- [Shang-Wen Wang](https://github.com/holyspectral), SUSE
+- [Victor Cuadrado Juan](https://github.com/viccuad), SUSE
 
 ## Maintainers
 
-- [Rafael Fernández López](https://github.com/ereslibre), VMware
+- [Alessio Greggi](https://github.com/alegrey91), RedHat
+- [Andrea Terzolo](https://github.com/andreaterzolo/), Isovalent
 - [Olivier Vernin](https://github.com/olblak), SUSE
+- [Rafael Fernández López](https://github.com/ereslibre), Curried Software
 - [Raul Cabello Martin](https://github.com/raulcabello), SUSE
 
 # Mentees
 
 - [Esosa Ohangbon](https://github.com/esosaoh) Google Summer of Code 2025
 - [Khaled Emara](https://github.com/KhaledEmaraDev) Linux Foundation Mentorship 2023
-- [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023      
+- [Shiva Gaire](https://github.com/geeksambhu) Linux Foundation Mentorship 2023
 
 # Community Management
+
 - [Dan Čermák](https://github.com/dcermak), SUSE
-- [Robert Sirchia](https://github.com/robertsirc), SUSE
+- [Robert Sirchia](https://github.com/robertsirc)

@@ -31,9 +31,14 @@ structures that span beyond the extent of a single repository.
 
 ## Quickstart
 
-We recommend you read our Quickstart page at [docs.kubewarden.io](https://docs.kubewarden.io/quick-start)
-to get familiarized with Kubewarden and what it aims to achieve. From then,
-feel free explore the full documentation to understand all its features.
+Start with the quick start of the component you are interested in:
+
+- [Admission Controller](https://docs.kubewarden.io/admission-controller/latest/en/quick-start.html)
+- [Network Enforcer](https://docs.kubewarden.io/network-enforcer/latest/en/quickstart.html)
+- [Runtime Enforcer](https://docs.kubewarden.io/runtime-enforcer/latest/en/quickstart.html)
+- [SBOM Scanner](https://docs.kubewarden.io/sbom-scanner/latest/en/quickstart.html)
+
+Then explore the full documentation at [docs.kubewarden.io](https://docs.kubewarden.io/).
 
 ## Code Of Conduct
 
@@ -72,7 +77,7 @@ We host regular online meetings for contributors, adopters, maintainers, and
 anyone else interested. These meetings usually take place on the second Thursday
 of the month at 4 PM UTC.
 
-- [Zoom link](https://zoom.us/j/92928111886)
+- [Meeting calendar and Zoom link](https://zoom-lfx.platform.linuxfoundation.org/meetings/kubewarden?view=week)
 - [Minutes from earlier meetings](https://docs.google.com/document/d/1TgPIFKygkR2_vViCSfBEzwDDactfTcedc9fc4AeVJ9w/edit#)
 
 We're a friendly group, so please feel free to join us!
@@ -85,7 +90,7 @@ the [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## Security policy
 
-See the [security policy](./https://github.com/kubewarden/.github/blob/main/SECURITY.md) for more information about how to report
+See the [security policy](https://github.com/kubewarden/.github/blob/main/SECURITY.md) for more information about how to report
 any security issues.
 
 ## Repositories
@@ -115,7 +120,7 @@ installing, running and using Kubewarden.
 | NAME                                                                          | STATUS                                                                                                                                                                   | DESCRIPTION                                                          |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
 | [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller)     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Manage admission policies in your Kubernetes cluster with ease       |
-| [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner)           | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A SBOM-centric security scanner for Kubernetes                       |
+| [kubewarden/sbomscanner](https://github.com/kubewarden/sbomscanner)           | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | An SBOM-centric security scanner for Kubernetes                       |
 | [kubewarden/helm-charts](https://github.com/kubewarden/helm-charts)           | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Helm charts for the Kubewarden project                               |
 | [kubewarden/runtime-enforcer](https://github.com/kubewarden/runtime-enforcer) | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | A runtime enforcement solution for your Kubernetes cluster           |
 | [kubewarden/network-enforcer](https://github.com/kubewarden/network-enforcer) | [![Sandbox](https://img.shields.io/badge/status-sandbox-red?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#sandbox)             | Generate and enforce network policies from observed workload traffic |
@@ -128,7 +133,6 @@ installing, running and using Kubewarden.
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | [kubewarden/automation](https://github.com/kubewarden/automation)                                   | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Automation scripts for the management of the Kubewarden organization on GitHub |
 | [kubewarden/load-testing](https://github.com/kubewarden/load-testing)                               | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | HTTP load to stress policy-server                                              |
-| [kubewarden/rancher-kubectl-builder](https://github.com/kubewarden/rancher-kubectl-builder)         | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Workflow to rebuild and sign rancher/kubectl image                             |
 | [kubewarden/github-actions](https://github.com/kubewarden/github-actions)                           | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | GitHub actions used by the Kubewarden project                                  |
 | [kubewarden/kubewarden-end-to-end-tests](https://github.com/kubewarden/kubewarden-end-to-end-tests) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable) | Files used to run Kubewarden end-to-end tests                                  |
 
@@ -137,7 +141,7 @@ installing, running and using Kubewarden.
 [![Kubewarden Policy Repository](./badges/kubewarden-policies.svg)](./REPOSITORIES.md#policy-scope)
 
 All the policies maintained by the Kubewarden team are stored in the
-[kubewarden/policies](https://github.com/kubewarden/policies) and [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) repositories.
+[kubewarden/policies](https://github.com/kubewarden/policies) repository.
 
 For policies across **all** of GitHub, see the
 [`kubewarden-policy`](https://github.com/topics/kubewarden-policy) topic tag.
@@ -145,7 +149,7 @@ For policies across **all** of GitHub, see the
 #### Policies templates
 
 The following repositories are the template the policy authors can use to write
-their own policies. Checkout the Kubewarden [documentation](https://docs.kubewarden.io/)
+their own policies. See the Kubewarden [documentation](https://docs.kubewarden.io/)
 for more information about how to write policies.
 
 | NAME                                                                                              | STATUS                                                                                                                                                                   | DESCRIPTION                                                                                                                        |
@@ -164,7 +168,7 @@ For policy templates across **all** of GitHub, see the [`kubewarden-policy-templ
 #### Policies SDKs
 
 The following repositories are the SDKs the policy authors can use to write
-their own policies. Checkout the Kubewarden [documentation](https://docs.kubewarden.io/)
+their own policies. See the Kubewarden [documentation](https://docs.kubewarden.io/).
 
 | NAME                                                                            | STATUS                                                                                                                                                                   | DESCRIPTION                                                              |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
@@ -194,11 +198,10 @@ See [REPOSITORIES.md](./REPOSITORIES.md#special-scope) for more information.
 | [kubewarden/kubewarden.io](https://github.com/kubewarden/kubewarden.io)                 | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Kubewarden website                                                                                               |
 | [kubewarden/gostubpkg](https://github.com/kubewarden/gostubpkg)                         | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | gostubpkg is a tool for generating stubs of Go packages                                                          |
 | [kubewarden/k8s-objects-generator](https://github.com/kubewarden/k8s-objects-generator) | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | CLI tool that generates Kubernetes Go types that can be used with TinyGo starting from the official OpenAPI spec |
-| [kubewarden/strfmt](https://github.com/kubewarden/strfmt)                               | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | A stripped down version of go-openapi/strfrm that works with TinyGo                                              |
+| [kubewarden/strfmt](https://github.com/kubewarden/strfmt)                               | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | A stripped down version of go-openapi/strfmt that works with TinyGo                                              |
 | [kubewarden/k8s-objects](https://github.com/kubewarden/k8s-objects)                     | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Kubernetes Go types that can be used with TinyGo                                                                 |
 | [kubewarden/utils](https://github.com/kubewarden/utils)                                 | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | Utils scripts used by the Kubewarden team and users.                                                             |
-| [kubewarden/gtmpl-rust](https://github.com/kubewarden/gtmpl-rust)                       | [![Stable](https://img.shields.io/badge/status-stable-brightgreen?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#stable)        | golang text/template for rust                                                                                    |
-| [kubewarden/policy-charts](https://github.com/kubewarden/policy-charts)                 | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | Poliy Helm charts for Rancher UI                                                                                 |
+| [kubewarden/policy-charts](https://github.com/kubewarden/policy-charts)                 | [![Incubating](https://img.shields.io/badge/status-incubating-orange?style=for-the-badge)](https://github.com/kubewarden/community/blob/main/REPOSITORIES.md#incubating) | Policy Helm charts for Rancher UI                                                                                |
 
 ### Archived
 
@@ -209,13 +212,16 @@ under the [Kubewarden](https://github.com/kubewarden) GitHub's
 organization anymore. In other cases, a repository is archived to reserve its
 name for future use.
 
-The following repositories where merged into the [kubewarden/adm-controller] repository:
+The following repositories were merged into the [kubewarden/adm-controller](https://github.com/kubewarden/adm-controller) repository:
 
 - [kubewarden/policy-server](https://github.com/kubewarden/policy-server)
 - [kubewarden/audit-scanner](https://github.com/kubewarden/audit-scanner)
 - [kubewarden/kwctl](https://github.com/kubewarden/kwctl/)
 - [kubewarden/policy-evaluator](https://github.com/kubewarden/policy-evaluator)
 - [kubewarden/policy-fetcher](https://github.com/kubewarden/policy-fetcher/)
+
+[kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library)
+was merged into [kubewarden/policies](https://github.com/kubewarden/policies).
 
 The full list of archived repositories can be found
 [here](https://github.com/kubewarden?q=&type=archived&language=&sort=name).
